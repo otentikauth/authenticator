@@ -137,6 +137,6 @@ under the terms of [Apache License 2.0][choosealicense]. A copy of each license 
 The binary distributions of Otentik Authenticator and the [Otentik managed service](https://vault.otentik.app)
 are copyrighted.
 
-For more information, see the [licensing information](./LICENSING.md).
+For more information, see the [licensing information](./LICENSE.md).
 
 [choosealicense]: https://choosealicense.com/licenses/apache-2.0/
