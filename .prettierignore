@@ -1,0 +1,22 @@
+# Add files here to ignore them from prettier formatting
+
+.cache/
+.turbo/
+.vscode/
+.vercel/
+.github/
+.next/
+coverage/
+public/
+build/
+dist/
+out/
+pnpm-lock.yaml
+package-lock.json
+package.json
+yarn.lock
+
+# Tauri apps
+node_modules/
+src-tauri/
+vite-env.d.ts
