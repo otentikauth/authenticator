@@ -1,0 +1,81 @@
+{
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/otentik-db/src",
+    "projectType": "library",
+    "targets": {
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["libs/otentik-db/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/otentik-db"],
+            "options": {
+                "jestConfig": "libs/otentik-db/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "start": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": ["supabase start"],
+                "cwd": "libs/otentik-db",
+                "parallel": false
+            }
+        },
+        "stop": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": ["supabase stop"],
+                "cwd": "libs/otentik-db",
+                "parallel": false
+            }
+        },
+        "restart": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": ["supabase stop", "supabase start"],
+                "cwd": "libs/otentik-db",
+                "parallel": false
+            }
+        },
+        "create-local-snapshot": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": ["ts-node libs/otentik-db/src/create-local-snapshot.ts -P libs/otentik-db/tsconfig.json"],
+                "parallel": false
+            }
+        },
+        "create-production-snapshot": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": [
+                    "ts-node libs/otentik-db/src/create-production-snapshot.ts -P libs/otentik-db/tsconfig.json"
+                ],
+                "parallel": false
+            }
+        },
+        "restore-snapshot-to-local-db": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": ["ts-node libs/otentik-db/src/restore-snapshot.ts -P libs/otentik-db/tsconfig.json"],
+                "parallel": false,
+                "__unparsed__": []
+            }
+        },
+        "clear-local-db-data": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": [
+                    "PGPASSWORD=postgres psql -U postgres -h 127.0.0.1 -p 54322 -f libs/otentik-db/supabase/clear-db.sql"
+                ],
+                "parallel": false,
+                "__unparsed__": []
+            }
+        }
+    },
+    "tags": []
+}

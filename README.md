@@ -11,13 +11,14 @@
     </a>
 </p>
 
-# Otentik Client Applications
+## Introduction
 
 This repository houses all Otentik client applications except the [web vault](https://vault.otentik.app).
 
-Please refer to the Clients section of the Contributing Documentation for build instructions, recommended tooling, code style tips, and lots of other great information to get you started.
+<!-- Please refer to the Clients section of the Contributing Documentation for build instructions, recommended tooling, code style tips,
+and lots of other great information to get you started. -->
 
-## Introduction
+---
 
 Otentik Authenticator is a secure, Open Source, and Google Authenticator compatible application to manage your 2-step verification (2FA)
 tokens for your online services. Otentik Authentocator is lightweight and support time-based (TOTP) & counter-based (HOTP) token.
@@ -36,9 +37,9 @@ Currently only supports macOS with Intel chipset. Windows, Linux, and mobile ver
 
 The following migration guides walk you through the process of migrating from your existing OTP app to Otentik Authenticator.
 
-- Migrating from Google Authenticator to Otentik Authenticator (_todo_)
-- Migrating from Authy to Otentik Authenticator (_todo_)
-- Migrating from Raivo OTP to Otentik Authenticator (_todo_)
+-   Migrating from Google Authenticator to Otentik Authenticator (_todo_)
+-   Migrating from Authy to Otentik Authenticator (_todo_)
+-   Migrating from Raivo OTP to Otentik Authenticator (_todo_)
 
 ## How was this built?
 
@@ -54,14 +55,14 @@ Supabase.
 
 ### The complete tech stack:
 
-- [Supabase](https://supabase.com/): auth and database.
-- [Tauri](https://tauri.app/): for the desktop app.
-- [Rust](https://www.rust-lang.org/): Tauri is using Rust.
-- [TypeScript](https://www.typescriptlang.org/): for type checking.
-- [React](https://reactjs.org/): for the UI frontend library.
-- [Vite](https://vitejs.dev/): for the frontend tooling.
-- [Tailwind CSS](https://tailwindcss.com/): for the styling.
-- [Headless UI](https://headlessui.com/): create interactive UI.
+-   [Supabase](https://supabase.com/): auth and database.
+-   [Tauri](https://tauri.app/): for the desktop app.
+-   [Rust](https://www.rust-lang.org/): Tauri is using Rust.
+-   [TypeScript](https://www.typescriptlang.org/): for type checking.
+-   [React](https://reactjs.org/): for the UI frontend library.
+-   [Vite](https://vitejs.dev/): for the frontend tooling.
+-   [Tailwind CSS](https://tailwindcss.com/): for the styling.
+-   [Headless UI](https://headlessui.com/): create interactive UI.
 
 ### Why Tauri?
 
@@ -99,12 +100,12 @@ Read more at: <https://tauri.app/v1/guides/distribution/updater/#signing-updates
 
 ## Roadmaps
 
-- [ ] Account management
-- [ ] Export & import collections
-- [ ] Offline synchronization
-- [ ] Create mobile version
-- [ ] Create Windows version
-- [ ] Create Linux version
+-   [ ] Account management
+-   [ ] Export & import collections
+-   [ ] Offline synchronization
+-   [ ] Create mobile version
+-   [ ] Create Windows version
+-   [ ] Create Linux version
 
 ## Security Issues
 
