@@ -9,6 +9,7 @@
         "test": "nx test"
     },
     "dependencies": {
+        "inquirer": "^9.1.0",
         "tslib": "^2.3.0"
     },
     "devDependencies": {
@@ -18,6 +19,7 @@
         "@nrwl/linter": "14.5.10",
         "@nrwl/nx-cloud": "latest",
         "@nrwl/workspace": "14.5.10",
+        "@types/inquirer": "^9.0.1",
         "@types/jest": "27.4.1",
         "@types/node": "16.11.7",
         "@typescript-eslint/eslint-plugin": "^5.29.0",
