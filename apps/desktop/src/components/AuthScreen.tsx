@@ -6,8 +6,8 @@ import { sbClient } from '../utils/supabase'
 import { LoaderScreen } from './LoaderScreen'
 import { classNames } from '../utils/ui-helpers'
 import { createHash } from '../utils/string-helpers'
-import { AppLogo } from './AppLogo'
 import { ExitButton } from './ExitButton'
+import { TitleBar } from './TitleBar'
 
 export const AuthScreen = () => {
   const [loading, setLoading] = useState(false)
@@ -57,12 +57,12 @@ export const AuthScreen = () => {
   if (loading) return <LoaderScreen />
 
   return (
-    <>
+    <div className="pt-16">
+      <TitleBar />
       <ExitButton />
       <div className={classNames(actionIsLogin ? 'py-12' : 'py-0', 'flex min-h-full items-center justify-center px-6')}>
         <div className="w-full max-w-sm">
           <div>
-            <AppLogo className={classNames(actionIsLogin ? 'h-12' : 'h-8', 'mx-auto w-auto')} />
             <h2 className="mt-8 text-center text-xl font-semibold tracking-tight text-white">
               {actionIsLogin ? 'Sign in to continue' : 'Create account'}
             </h2>
@@ -158,6 +158,6 @@ export const AuthScreen = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

@@ -45,13 +45,7 @@ function App() {
     online && toast.success('Your internet connection is back!')
   }
 
-  if (!session) {
-    return (
-      <div className="pt-16">
-        <AuthScreen />
-      </div>
-    )
-  }
+  if (!session) return <AuthScreen />
 
   return (
     <div className="mx-auto max-w-sm">
