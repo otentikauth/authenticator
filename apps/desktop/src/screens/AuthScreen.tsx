@@ -5,9 +5,10 @@ import toast from 'react-hot-toast'
 import { sbClient } from '../utils/supabase'
 import { LoaderScreen } from '../components/LoaderScreen'
 import { classNames } from '../utils/ui-helpers'
-import { createHash } from '../utils/string-helpers'
+import { createHash, md5Hash } from '../utils/string-helpers'
 import { ExitButton } from '../components/ExitButton'
 import { TitleBar } from '../components/TitleBar'
+import { localData } from '../utils/storage'
 
 export const AuthScreen = () => {
   const [loading, setLoading] = useState(false)
@@ -33,8 +34,14 @@ export const AuthScreen = () => {
 
     if (error) return toast.error(error.message)
 
-    setLoading(false)
-    resetForm()
+    if (user) {
+      // If login success then store hashed passphrase in localStorage
+      const hashedPassphrase = await md5Hash(password)
+      await localData.set('passphrase', hashedPassphrase)
+      setLoading(false)
+    }
+
+    return resetForm()
   }
 
   const handleRegister = async () => {
@@ -45,7 +52,7 @@ export const AuthScreen = () => {
     if (error) return toast.error(error.message)
     toast.success('Check your email to verify your account!')
     setActionIsLogin(true)
-    resetForm()
+    return resetForm()
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

@@ -47,7 +47,7 @@ export const encryptStr = async (plainStr: string): Promise<any> => {
 
 export const decryptStr = async (encryptedStr: string): Promise<any> => {
   const passphrase = await localData.get('passphrase')
-  return invoke('decrypt_str', { encryptedStr, passphrase })
+  return await invoke('decrypt_str', { encryptedStr, passphrase })
 }
 
 export const md5Hash = async (str: string): Promise<any> => {

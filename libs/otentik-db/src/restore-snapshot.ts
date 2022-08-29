@@ -9,7 +9,7 @@ async function restoreSnapshotToLocalDb() {
   // eslint-disable-next-line
   const path = require('path')
 
-  console.log('======== Restore Snapshot =========')
+  console.info('======== Restore Snapshot =========')
   const snapshotsPath = path.join(__dirname, '../supabase/snapshots')
   const snapshots = readdirSync(snapshotsPath)
 
@@ -20,11 +20,11 @@ async function restoreSnapshotToLocalDb() {
     message: 'select a snapshot to restore',
     name: 'snapshot',
   })
-  console.log(snapshot)
+  console.info(snapshot)
 
-  console.log('clearing current data')
+  console.info('clearing current data')
   execSync('PGPASSWORD=postgres psql -U postgres -h 127.0.0.1 -p 54322 -f libs/otentik-db/supabase/clear-db.sql')
-  console.log(`Restoring snapshot ${snapshot}...`)
+  console.info(`Restoring snapshot ${snapshot}...`)
   execSync(
     `PGPASSWORD=postgres psql -U postgres -h 127.0.0.1 -p 54322 -f libs/otentik-db/supabase/snapshots/${snapshot}`
   )
