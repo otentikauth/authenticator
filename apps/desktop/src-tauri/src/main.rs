@@ -28,17 +28,17 @@ fn main() {
         let _response = handle.updater().check().await;
       });
 
-      let win = app.get_window("main").unwrap();
-      win.set_transparent_titlebar(true, true);
+      let window = app.get_window("main").unwrap();
+      window.set_transparent_titlebar(true, true);
 
       // only include this code on debug builds
       #[cfg(debug_assertions)]
       {
-        win.open_devtools();
+        window.open_devtools();
       }
 
       // Listen New Update Available
-      win.listen("tauri://update-available".to_string(), move |msg| {
+      window.listen("tauri://update-available".to_string(), move |msg| {
         println!("New version available: {:?}", msg);
       });
 
