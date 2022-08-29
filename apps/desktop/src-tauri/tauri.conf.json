@@ -1,0 +1,88 @@
+{
+    "$schema": "../../../node_modules/@tauri-apps/cli/schema.json",
+    "build": {
+        "beforeDevCommand": "pnpm exec nx serve desktop",
+        "beforeBuildCommand": "pnpm exec nx build desktop",
+        "devPath": "http://localhost:5173",
+        "distDir": "../../../dist/apps/desktop"
+    },
+    "package": {
+        "productName": "Authenticator",
+        "version": "0.2.0"
+    },
+    "tauri": {
+        "allowlist": {
+            "all": true,
+            "dialog": {
+                "all": true
+            },
+            "fs": {
+                "all": true
+            },
+            "http": {
+                "scope": [
+                    "https://ifconfig.me/*",
+                    "https://api.otentik.app/*",
+                    "https://euixyxtccojbikdvifsy.supabase.co/*",
+                    "https://jsonplaceholder.typicode.com/*",
+                    "http://localhost:54321/*"
+                ]
+            }
+        },
+        "systemTray": {
+            "iconPath": "icons/tray-256.png",
+            "iconAsTemplate": true
+        },
+        "bundle": {
+            "active": true,
+            "category": "Utility",
+            "copyright": "Copyright © 2022 Aris Ripandi",
+            "deb": {
+                "depends": []
+            },
+            "externalBin": [],
+            "icon": ["icons/32.png", "icons/128.png", "icons/256.png", "icons/1024.ico", "icons/1024.icns"],
+            "identifier": "app.otentik.authenticator",
+            "longDescription": "Open Source two factor authenticator",
+            "macOS": {
+                "minimumSystemVersion": "10.15",
+                "exceptionDomain": "",
+                "frameworks": [],
+                "providerShortName": null,
+                "signingIdentity": null
+            },
+            "resources": [],
+            "shortDescription": "Open Source two factor authenticator",
+            "targets": ["dmg", "msi", "updater"],
+            "windows": {
+                "certificateThumbprint": null,
+                "digestAlgorithm": "sha256",
+                "timestampUrl": "",
+                "wix": {
+                    "enableElevatedUpdateTask": false
+                }
+            }
+        },
+        "security": {
+             "csp": "default-src blob: data: filesystem: ws: http: https: 'unsafe-eval' 'unsafe-inline'"
+        },
+        "updater": {
+            "active": true,
+            "dialog": true,
+            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERGMEY0NDQ0Qjk1NEZBOUYKUldTZitsUzVSRVFQMzcrNmZwQVBkZ0VlK3JBU2ZMYS83V0sreGFWMmQ3ZjJPM3dpa1JoY0xHM3YK",
+            "endpoints": [ "https://release.otentik.app/check/{{target}}/{{current_version}}" ]
+        },
+        "windows": [
+            {
+                "alwaysOnTop": true,
+                "fullscreen": false,
+                "maximized": false,
+                "resizable": false,
+                "skipTaskbar": false,
+                "title": "Authenticator",
+                "height": 600,
+                "width": 360
+            }
+        ]
+    }
+}

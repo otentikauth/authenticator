@@ -69,6 +69,39 @@
                 "jestConfig": "apps/desktop/jest.config.ts",
                 "passWithNoTests": true
             }
+        },
+        "clean": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": ["cargo clean"],
+                "cwd": "apps/desktop/src-tauri",
+                "parallel": false
+            }
+        },
+        "tauri:dev": {
+            "executor": "@nrwl/workspace:run-commands",
+            "defaultConfiguration": "development",
+            "options": {
+                "commands": ["tauri dev"],
+                "cwd": "apps/desktop",
+                "parallel": false
+            }
+        },
+        "build:mac:x64": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": ["tauri build --target x86_64-apple-darwin"],
+                "cwd": "apps/desktop",
+                "parallel": false
+            }
+        },
+        "build:mac:arm": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+                "commands": ["tauri build --target aarch64-apple-darwin"],
+                "cwd": "apps/desktop",
+                "parallel": false
+            }
         }
     },
     "tags": []
