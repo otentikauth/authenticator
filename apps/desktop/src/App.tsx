@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Offline, Online } from 'react-detect-offline'
 import { toast } from 'react-hot-toast'
 
-// import { disableBrowserEvents } from './utils/ui-helpers'
+import { disableBrowserEvents } from './utils/ui-helpers'
 import { useStores } from './stores/stores'
 import { useAuth } from './hooks/useAuth'
 
@@ -33,8 +33,8 @@ export default function App() {
   useHotkeys('ctrl+n, command+n', () => setFormCreateOpen(true))
 
   useEffect(() => {
-    // disableBrowserEvents('contextmenu')
-    // disableBrowserEvents('selectstart')
+    disableBrowserEvents('contextmenu')
+    disableBrowserEvents('selectstart')
   })
 
   const handleOffline = (online: boolean) => {
