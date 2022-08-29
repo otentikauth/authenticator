@@ -59,6 +59,7 @@ specifiers:
   react-hotkeys-hook: ^3.4.7
   react-test-renderer: 18.2.0
   regenerator-runtime: 0.13.7
+  smart-array-filter: ^4.0.0
   tailwind-scrollbar-hide: ^1.1.7
   tailwindcss: ^3.1.8
   tauri-plugin-store-api: github:tauri-apps/tauri-plugin-store#67530781d86b73fae4ee03c17f43c76f09ae3400
@@ -86,6 +87,7 @@ dependencies:
   react-hot-toast: 2.3.0_vt6aeitzauirmcdhimiad2yjxy
   react-hotkeys-hook: 3.4.7_biqbaboplfbrettd7655fr4n2y
   regenerator-runtime: 0.13.7
+  smart-array-filter: 4.0.0
   tauri-plugin-store-api: github.com/tauri-apps/tauri-plugin-store/67530781d86b73fae4ee03c17f43c76f09ae3400
   tslib: 2.4.0
   zustand: 4.1.1_react@18.2.0
@@ -96,7 +98,7 @@ devDependencies:
   '@nrwl/eslint-plugin-nx': 14.5.10_mkfqjmeize2qesywaebju6tdq4
   '@nrwl/jest': 14.5.10_oqd6w67pqggug57az6damxqvgm
   '@nrwl/linter': 14.5.10_3psvxjt3liempitzqbdf5qxvj4
-  '@nrwl/nx-cloud': 14.5.4
+  '@nrwl/nx-cloud': 14.6.0
   '@nrwl/react': 14.5.10_tilqggqm46lqllqdln5o6owqle
   '@nrwl/web': 14.5.10_yx5gzn5jiuji2pp4emax3s37ja
   '@nrwl/workspace': 14.5.10_kxl3u5377hpplmpncpxn2z7soa
@@ -2100,8 +2102,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@nrwl/nx-cloud/14.5.4:
-    resolution: {integrity: sha512-fuKsx+2jvpL5OAuwSUsODEydzt01qiPJwZslbCtMWXRGva5KNbT4udNwl0C1M/W9RFVYmFbD7n4Ewz3oho531A==}
+  /@nrwl/nx-cloud/14.6.0:
+    resolution: {integrity: sha512-TAL3MtuAPOYA+9Zk3q0qvOc67TW/L8gABFMMq5I9ywoPyK6qpUQn0SOGvC8nFCKdi/oC7L7xtDMXnjECNIL2ng==}
     hasBin: true
     dependencies:
       axios: 0.21.4
@@ -7831,6 +7833,10 @@ packages:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: true
 
+  /lodash.escaperegexp/4.1.2:
+    resolution: {integrity: sha512-TM9YBvyC84ZxE3rgfefxUWiQKLilstD6k7PTGt6wfbtXF8ixIJLOL3VYyV/z+ZiPLsVxAsKAFVwWlWeb2Y8Yyw==}
+    dev: false
+
   /lodash.isplainobject/4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
     dev: true
@@ -9847,6 +9853,12 @@ packages:
       ansi-styles: 6.1.0
       is-fullwidth-code-point: 4.0.0
     dev: true
+
+  /smart-array-filter/4.0.0:
+    resolution: {integrity: sha512-pAU9bDDanXvtF9D/dcWwIZn+yOg26AyD5jhFDECPs+vNZolaz6xRrHVJzCXqEtmY9woeGcS//+D9ot417PXxsQ==}
+    dependencies:
+      lodash.escaperegexp: 4.1.2
+    dev: false
 
   /sockjs/0.3.24:
     resolution: {integrity: sha512-GJgLTZ7vYb/JtPSSZ10hsOYIvEYsjbNU+zPdIHcUaWVNUEPivzxku31865sSSud0Da0W4lEeOPlmw93zLQchuQ==}
