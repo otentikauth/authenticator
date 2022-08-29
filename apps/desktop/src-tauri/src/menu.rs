@@ -9,7 +9,7 @@ pub(crate) fn menu() -> Menu {
   // App Menu (macOS)
   // ---------------------------------------------------------------------------------------------
   let about_menu = AboutMetadata::new()
-    .version(String::from("0.3.0"))
+    .version(String::from("0.4.0"))
     .authors(vec![String::from("Aris Ripandi")])
     .comments(String::from("Open Source two factor authenticator"))
     .copyright(String::from("Apache-2.0 License"))
