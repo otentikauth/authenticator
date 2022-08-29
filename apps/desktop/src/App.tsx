@@ -14,7 +14,13 @@ import { OfflineScreen } from './screens/OfflineScreen'
 import { AuthScreen } from './screens/AuthScreen'
 import { MainScreen } from './screens/MainScreen'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+    },
+  },
+})
 
 const offlineDetectConfig = {
   url: 'https://ifconfig.me/ip',

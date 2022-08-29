@@ -1,6 +1,6 @@
+import { FC, useRef } from 'react'
 import { Dialog } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-import { FC, useRef } from 'react'
 import { DialogTransition } from './DialogTransition'
 
 interface ConfirmDialogProps {

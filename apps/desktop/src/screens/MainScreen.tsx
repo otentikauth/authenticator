@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useIsFetching } from '@tanstack/react-query'
 
 import { useStores } from '../stores/stores'
 import { useGetCollections } from '../hooks/useGetCollections'
@@ -15,6 +16,8 @@ import { ErrorScreen } from './ErrorScreen'
 import { LockScreen } from './LockScreen'
 
 export const MainScreen = (): JSX.Element => {
+  const isFetching = useIsFetching()
+  const locked = useStores((state) => state.locked)
   const forceFetch = useStores((state) => state.forceFetch)
   const setForceFetch = useStores((state) => state.setForceFetch)
   const [filter, setFilter] = useState('')
@@ -22,10 +25,10 @@ export const MainScreen = (): JSX.Element => {
   // Fetch decrypted vaults data.
   // TODO: Use LyraSearch for local search indexing.
   // const { isLoading, error, data, isFetching, refetch }: any = useLoadCollection(filter)
-  const { isLoading, error, data, isFetching, refetch }: any = useGetCollections({ filter })
+  const { isLoading, error, data, refetch }: any = useGetCollections({ filter })
 
   if (isLoading && !filter) return <LoaderScreen />
-  if (error) return <ErrorScreen message={error.message} />
+  if (!locked && error) return <ErrorScreen message={error.message} />
 
   if (forceFetch) {
     refetch()

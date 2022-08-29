@@ -2,7 +2,7 @@ import { db as vaultDB, insert, search } from '../utils/lyra-search'
 import { useGetCollections } from './useGetCollections'
 
 export const useLoadCollection = (filter: string) => {
-  const { isLoading, error, data: rawData, isFetching, refetch }: any = useGetCollections()
+  const { isLoading, error, data: rawData, isFetching, refetch }: any = useGetCollections({})
 
   let searchResult
   if (rawData) {

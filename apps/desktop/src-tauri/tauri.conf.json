@@ -19,6 +19,9 @@
             "fs": {
                 "all": true
             },
+            "path": {
+			    "all": true
+            },
             "http": {
                 "scope": [
                     "https://ifconfig.me/*",
