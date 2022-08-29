@@ -8,8 +8,8 @@ verification (2FA) tokens for your online services. Otentik Authentocator is lig
 
 Source code for Otentik Authenticator is variously licensed under a number of different licenses.
 
-The source code Otentik Authenticator for macOS, iOS, Android, and browser extensions are available to everyone under
-the terms of [Apache License 2.0][choosealicense]. A copy of each license can be found in each project [packages](./apps/)
+The source code Otentik Authenticator for macOS, iOS, and Android are available to everyone under the terms of
+[Apache License 2.0][choosealicense]. A copy of each license can be found in each project [packages](./apps/)
 and [libraries](./libs/).
 
 Copyrights in this project are retained by their contributors.
