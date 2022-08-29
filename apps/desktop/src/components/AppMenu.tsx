@@ -82,9 +82,12 @@ export const AppMenu = () => {
     }
   }
 
-  const handleSignOut = () => {
-    resetStates()
-    sbClient.auth.signOut().catch(console.error)
+  const handleSignOut = async () => {
+    const yes = await ask('Are you sure?', { title: 'Confirm sign out', type: 'warning' })
+    if (yes) {
+      resetStates()
+      sbClient.auth.signOut().catch(console.error)
+    }
   }
 
   // Keyboard shortcut for lock screen

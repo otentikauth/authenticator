@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { Offline, Online } from 'react-detect-offline'
 import { toast } from 'react-hot-toast'
 
@@ -13,14 +13,7 @@ import { ExitButton } from './components/ExitButton'
 import { OfflineScreen } from './screens/OfflineScreen'
 import { AuthScreen } from './screens/AuthScreen'
 import { MainScreen } from './screens/MainScreen'
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      cacheTime: 1000 * 60 * 60 * 24, // 24 hours
-    },
-  },
-})
+import { queryClient } from './utils/queries'
 
 const offlineDetectConfig = {
   url: 'https://ifconfig.me/ip',
