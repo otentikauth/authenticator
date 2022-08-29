@@ -1,4 +1,4 @@
-import './style.css'
+import './styles/global.css'
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const app = document.querySelector<HTMLDivElement>('#app')!
