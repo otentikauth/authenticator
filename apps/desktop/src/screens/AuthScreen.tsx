@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
-import toast from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 
 import { sbClient } from '../utils/supabase'
 import { LoaderScreen } from '../components/LoaderScreen'

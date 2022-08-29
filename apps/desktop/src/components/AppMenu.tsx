@@ -1,18 +1,16 @@
 import { Fragment } from 'react'
 import { appWindow } from '@tauri-apps/api/window'
 import { ask, open, save } from '@tauri-apps/api/dialog'
-// import { checkUpdate } from '@tauri-apps/api/updater'
 
 import { Menu, Transition } from '@headlessui/react'
 import {
   LockClosedIcon,
-  CogIcon,
+  ArrowPathIcon,
   ArrowRightOnRectangleIcon,
   DocumentPlusIcon,
   XCircleIcon,
-  ArchiveBoxIcon,
-  ArrowDownOnSquareIcon,
-  ArrowPathIcon,
+  ArrowUturnUpIcon,
+  ArrowUturnDownIcon,
 } from '@heroicons/react/24/outline'
 import { Bars3Icon } from '@heroicons/react/24/solid'
 import { useHotkeys } from 'react-hotkeys-hook'
@@ -22,6 +20,7 @@ import { classNames } from '../utils/ui-helpers'
 import { sbClient } from '../utils/supabase'
 import { MenuDivider } from './MenuDivider'
 import { exportCollections, importCollections } from '../utils/import-export'
+import { toast } from 'react-hot-toast'
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms))
 
@@ -38,7 +37,7 @@ export const AppMenu = () => {
   }
 
   const handleImport = async () => {
-    // Open a selection dialog for image files
+    // Open a selection dialog for backup file
     const selected = await open({
       multiple: false,
       filters: [
@@ -53,6 +52,7 @@ export const AppMenu = () => {
       // user selected multiple files
     } else if (selected === null) {
       // user cancelled the selection
+      toast.error('Canceled!')
     } else {
       // user selected a single file
       await importCollections(selected)
@@ -82,14 +82,6 @@ export const AppMenu = () => {
     }
   }
 
-  const handleUpdate = async () => {
-    try {
-      // TODO: enable auto update check
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   const handleSignOut = () => {
     resetStates()
     sbClient.auth.signOut().catch(console.error)
@@ -115,7 +107,7 @@ export const AppMenu = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-1 mt-2 w-48 origin-top-right rounded bg-white shadow ring-1 ring-black/5 focus:outline-none dark:bg-gray-700">
+          <Menu.Items className="absolute right-1 mt-2 w-52 origin-top-right rounded bg-white shadow ring-1 ring-black/5 focus:outline-none dark:bg-gray-700">
             {!locked && (
               <>
                 <Menu.Item>
@@ -145,21 +137,6 @@ export const AppMenu = () => {
                       onClick={() => setForceFetch(true)}
                     >
                       <span>Sync Vault</span>
-                      <CogIcon className="h-4 w-4 text-gray-500 dark:text-gray-300" />
-                    </button>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }: { active: boolean }) => (
-                    <button
-                      type="button"
-                      className={classNames(
-                        active ? 'bg-gray-100 dark:bg-gray-500' : '',
-                        'inline-flex w-full items-center justify-between px-5 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-100'
-                      )}
-                      onClick={handleUpdate}
-                    >
-                      <span>Check for Updates</span>
                       <ArrowPathIcon className="h-4 w-4 text-gray-500 dark:text-gray-300" />
                     </button>
                   )}
@@ -176,7 +153,7 @@ export const AppMenu = () => {
                       onClick={handleImport}
                     >
                       <span>Import</span>
-                      <ArrowDownOnSquareIcon className="h-4 w-4 text-gray-500 dark:text-gray-300" />
+                      <ArrowUturnDownIcon className="h-4 w-4 text-gray-500 dark:text-gray-300" />
                     </button>
                   )}
                 </Menu.Item>
@@ -191,7 +168,7 @@ export const AppMenu = () => {
                       onClick={handleExport}
                     >
                       <span>Export</span>
-                      <ArchiveBoxIcon className="h-4 w-4 text-gray-500 dark:text-gray-300" />
+                      <ArrowUturnUpIcon className="h-4 w-4 text-gray-500 dark:text-gray-300" />
                     </button>
                   )}
                 </Menu.Item>

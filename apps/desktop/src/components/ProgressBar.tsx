@@ -12,7 +12,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({ percentage }) => {
         <div
           style={{ width: `${percentage}%` }}
           className={classNames(
-            percentage >= 60 ? 'from-blue-500 to-red-500' : 'from-cyan-500 to-blue-500',
+            percentage < 40 ? 'from-red-900 to-red-400' : 'from-red-500 to-blue-500',
             'h-1.5 bg-gradient-to-r'
           )}
         ></div>
