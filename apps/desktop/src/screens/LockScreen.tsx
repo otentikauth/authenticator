@@ -6,9 +6,9 @@ import { ExclamationCircleIcon } from '@heroicons/react/24/solid'
 import { useAuth } from '../hooks/useAuth'
 import { useStores } from '../stores/stores'
 import { classNames } from '../utils/ui-helpers'
-import { DialogTransition } from './DialogTransition'
+import { DialogTransition } from '../components/DialogTransition'
 import { md5Hash, verifyHash } from '../utils/string-helpers'
-import { LoaderScreen } from './LoaderScreen'
+import { LoaderScreen } from '../components/LoaderScreen'
 import { localData } from '../utils/storage'
 
 export const LockScreen = () => {
@@ -52,7 +52,7 @@ export const LockScreen = () => {
   if (loading) return <LoaderScreen />
 
   return (
-    <DialogTransition isOpen={locked} className="flex h-full items-center justify-center px-4">
+    <DialogTransition isOpen={locked} className="z-20 flex h-full items-center justify-center px-4">
       <Dialog.Panel className="relative w-full rounded-lg bg-white px-4 py-5 text-left shadow-lg">
         <form onSubmit={handleUnlockAction}>
           <div>

@@ -3,15 +3,16 @@ import { useState } from 'react'
 import { useStores } from '../stores/stores'
 import { useGetCollections } from '../hooks/useGetCollections'
 
-import { AppMenu } from './AppMenu'
-import { FormCreate } from './FormCreate'
-import { ItemsList } from './ItemsList'
-import { LockScreen } from './LockScreen'
-import { ProgressBar } from './ProgressBar'
-import { SearchBar } from './SearchBar'
-import { LoaderScreen } from './LoaderScreen'
-import { LoadingIndicator } from './LoadingIndicator'
+import { AppMenu } from '../components/AppMenu'
+import { FormCreate } from '../components/FormCreate'
+import { ItemsList } from '../components/ItemsList'
+import { ProgressBar } from '../components/ProgressBar'
+import { SearchBar } from '../components/SearchBar'
+import { LoaderScreen } from '../components/LoaderScreen'
+import { LoadingIndicator } from '../components/LoadingIndicator'
+
 import { ErrorScreen } from './ErrorScreen'
+import { LockScreen } from './LockScreen'
 
 export const MainScreen = (): JSX.Element => {
   const forceFetch = useStores((state) => state.forceFetch)
@@ -34,7 +35,7 @@ export const MainScreen = (): JSX.Element => {
   // console.log('MAIN SCREEN', data)
 
   return (
-    <div className="pt-16">
+    <div className="z-40 pt-16">
       <AppMenu />
       <LockScreen />
       <SearchBar keyword={filter} setKeyword={setFilter} />

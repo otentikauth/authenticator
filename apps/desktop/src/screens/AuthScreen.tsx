@@ -3,11 +3,11 @@ import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
 import toast from 'react-hot-toast'
 
 import { sbClient } from '../utils/supabase'
-import { LoaderScreen } from './LoaderScreen'
+import { LoaderScreen } from '../components/LoaderScreen'
 import { classNames } from '../utils/ui-helpers'
 import { createHash } from '../utils/string-helpers'
-import { ExitButton } from './ExitButton'
-import { TitleBar } from './TitleBar'
+import { ExitButton } from '../components/ExitButton'
+import { TitleBar } from '../components/TitleBar'
 
 export const AuthScreen = () => {
   const [loading, setLoading] = useState(false)
@@ -57,7 +57,7 @@ export const AuthScreen = () => {
   if (loading) return <LoaderScreen />
 
   return (
-    <div className="pt-16">
+    <div className="z-20 pt-16">
       <TitleBar />
       <ExitButton />
       <div className={classNames(actionIsLogin ? 'py-12' : 'py-0', 'flex min-h-full items-center justify-center px-6')}>

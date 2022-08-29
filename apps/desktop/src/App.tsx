@@ -5,14 +5,14 @@ import { Offline, Online } from 'react-detect-offline'
 import { toast } from 'react-hot-toast'
 
 import { disableBrowserEvents } from './utils/ui-helpers'
+import { useStores } from './stores/stores'
 import { useAuth } from './hooks/useAuth'
 
-import { MainScreen } from './components/MainScreen'
-import { AuthScreen } from './components/AuthScreen'
-import { useStores } from './stores/stores'
-import { OfflineScreen } from './components/OfflineScreen'
 import { TitleBar } from './components/TitleBar'
 import { ExitButton } from './components/ExitButton'
+import { OfflineScreen } from './screens/OfflineScreen'
+import { AuthScreen } from './screens/AuthScreen'
+import { MainScreen } from './screens/MainScreen'
 
 const queryClient = new QueryClient()
 
@@ -23,7 +23,7 @@ const offlineDetectConfig = {
   timeout: 5000,
 }
 
-function App() {
+export default function App() {
   const session = useAuth()
   const setFormCreateOpen = useStores((state) => state.setFormCreateOpen)
   const setForceFetch = useStores((state) => state.setForceFetch)
@@ -64,5 +64,3 @@ function App() {
     </div>
   )
 }
-
-export default App

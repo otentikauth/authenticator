@@ -109,7 +109,7 @@ export const AppMenu = () => {
   useHotkeys('ctrl+l, command+l', () => setLockStreenState(true))
 
   return (
-    <div className="absolute top-0 right-0 z-40 flex h-14 items-center px-4">
+    <div className="absolute top-0 right-0 z-20 flex h-14 items-center px-4">
       <Menu as="div" className="relative">
         <div>
           <Menu.Button className="-mr-1 flex cursor-pointer items-center justify-center rounded-md p-1.5 outline-none hover:bg-gray-700">
@@ -125,7 +125,7 @@ export const AppMenu = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-1 mt-2 w-48 origin-top-right rounded bg-white shadow ring-1 ring-black/5 focus:outline-none dark:bg-gray-700">
+          <Menu.Items className="absolute right-1 z-30 mt-2 w-48 origin-top-right rounded bg-white shadow ring-1 ring-black/5 focus:outline-none dark:bg-gray-700">
             {!locked && (
               <>
                 <Menu.Item>

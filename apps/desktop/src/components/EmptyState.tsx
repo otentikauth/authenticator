@@ -5,7 +5,7 @@ export const EmptyState = () => {
   const setFormCreateOpen = useStores((state) => state.setFormCreateOpen)
 
   return (
-    <div className="relative -mt-6 flex h-full flex-col items-center justify-center text-center">
+    <div className="relative z-10 -mt-6 flex h-full flex-col items-center justify-center text-center">
       <div>
         <DocumentDuplicateIcon className="mx-auto h-12 w-12 text-gray-400" />
         <h3 className="my-6 text-sm font-medium text-gray-900">You don&rsquo;t have any items.</h3>
