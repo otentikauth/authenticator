@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
-import { XCircleIcon } from '@heroicons/react/24/outline'
-import { appWindow } from '@tauri-apps/api/window'
 import toast from 'react-hot-toast'
 
 import { sbClient } from '../utils/supabase'
@@ -9,6 +7,7 @@ import { LoaderScreen } from './LoaderScreen'
 import { classNames } from '../utils/ui-helpers'
 import { createHash } from '../utils/string-helpers'
 import { AppLogo } from './AppLogo'
+import { ExitButton } from './ExitButton'
 
 export const AuthScreen = () => {
   const [loading, setLoading] = useState(false)
@@ -59,18 +58,7 @@ export const AuthScreen = () => {
 
   return (
     <>
-      <div className="absolute top-0 right-0 z-10 flex h-14 items-center px-4">
-        <div className="relative">
-          <div>
-            <button
-              className="-mr-1 flex cursor-pointer items-center justify-center rounded-md p-1.5 outline-none hover:bg-gray-700"
-              onClick={() => appWindow.close()}
-            >
-              <XCircleIcon className="h-6 w-6 text-white" />
-            </button>
-          </div>
-        </div>
-      </div>
+      <ExitButton />
       <div className={classNames(actionIsLogin ? 'py-12' : 'py-0', 'flex min-h-full items-center justify-center px-6')}>
         <div className="w-full max-w-sm">
           <div>

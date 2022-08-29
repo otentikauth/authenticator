@@ -11,7 +11,8 @@ import { MainScreen } from './components/MainScreen'
 import { AuthScreen } from './components/AuthScreen'
 import { useStores } from './stores/stores'
 import { OfflineScreen } from './components/OfflineScreen'
-import { AppLogo } from './components/AppLogo'
+import { TitleBar } from './components/TitleBar'
+import { ExitButton } from './components/ExitButton'
 
 const queryClient = new QueryClient()
 
@@ -54,21 +55,16 @@ function App() {
 
   return (
     <div className="mx-auto max-w-sm">
-      <div data-tauri-drag-region className="titlebar disable-select">
-        <div className="inline-flex items-center">
-          <AppLogo className="mr-1.5 h-6 w-auto" />
-        </div>
-      </div>
+      <TitleBar />
 
       <Offline polling={offlineDetectConfig} onChange={(online) => handleOffline(online)}>
+        <ExitButton />
         <OfflineScreen />
       </Offline>
 
       <Online polling={offlineDetectConfig} onChange={(online) => handleOnline(online)}>
         <QueryClientProvider client={queryClient}>
-          <div className="pt-16">
-            <MainScreen />
-          </div>
+          <MainScreen />
         </QueryClientProvider>
       </Online>
     </div>

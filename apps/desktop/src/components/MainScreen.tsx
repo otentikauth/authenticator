@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 
 import { useStores } from '../stores/stores'
 import { useGetCollections } from '../hooks/useGetCollections'
@@ -34,7 +34,7 @@ export const MainScreen = (): JSX.Element => {
   // console.log('MAIN SCREEN', data)
 
   return (
-    <Fragment>
+    <div className="pt-16">
       <AppMenu />
       <LockScreen />
       <SearchBar keyword={filter} setKeyword={setFilter} />
@@ -44,6 +44,6 @@ export const MainScreen = (): JSX.Element => {
       </div>
       {isFetching && <LoadingIndicator />}
       <FormCreate />
-    </Fragment>
+    </div>
   )
 }

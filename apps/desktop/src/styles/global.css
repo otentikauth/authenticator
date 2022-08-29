@@ -9,13 +9,7 @@
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-}
-
-/* Custom titlebar */
-.titlebar {
-  @apply fixed top-0 left-0 right-0 z-40 mx-auto flex h-14 max-w-sm justify-between bg-gray-900 py-3 px-4;
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
 /* Loader animation */
@@ -67,10 +61,10 @@
   80%,
   100% {
     box-shadow: 0 0;
-    height: 4em;
+    height: 4rem;
   }
   40% {
-    box-shadow: 0 -2em;
-    height: 5em;
+    box-shadow: 0 -2rem;
+    height: 5rem;
   }
 }

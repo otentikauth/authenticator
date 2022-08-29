@@ -2,7 +2,7 @@ import { BoltSlashIcon } from '@heroicons/react/24/outline'
 
 export const OfflineScreen = () => {
   return (
-    <div className="fixed inset-0 z-30 bg-gray-50 backdrop-blur-sm transition-opacity">
+    <div className="relative inset-0 z-10 mt-14 h-[544px] bg-gray-50 transition-opacity">
       <div className="flex h-full w-full items-center justify-center">
         <div>
           <BoltSlashIcon className="mx-auto h-14 w-14 text-gray-500" />
