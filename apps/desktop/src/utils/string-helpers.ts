@@ -1,7 +1,10 @@
+import * as OTPAuth from 'otpauth'
 import { invoke } from '@tauri-apps/api/tauri'
 import { localData } from './storage'
 
 type GenerateTOTPTypes = {
+  label: string
+  issuer: string
   secret: string
   digits: number
   period: number
@@ -50,6 +53,7 @@ export const decryptStr = async (encryptedStr: string): Promise<any> => {
 export const md5Hash = async (str: string): Promise<any> => {
   return invoke('md5_hash', { str })
 }
+
 export const createHash = async (plaintext: string): Promise<any> => {
   return invoke('create_hash', { plaintext })
 }
@@ -60,6 +64,9 @@ export const verifyHash = async (plaintext: string, hashedStr: string): Promise<
 
 // Generate TOTP token from secret using Rust.
 // https://tauri.app/v1/guides/features/command/
-export const generateTOTP = async ({ secret, period, digits, algorithm }: GenerateTOTPTypes): Promise<any> => {
-  return invoke('generate_totp', { secret, period, digits, algorithm })
+export const generateTOTP = ({ issuer, secret, period, digits, algorithm, label }: GenerateTOTPTypes): string => {
+  // return invoke('generate_totp', { secret, period, digits, algorithm })
+  const totp = new OTPAuth.TOTP({ issuer, secret, period, digits, algorithm, label })
+
+  return totp.generate().toString()
 }

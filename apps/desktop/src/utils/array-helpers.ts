@@ -105,11 +105,13 @@ export async function parseCollections(data: any[]) {
     const icon_path = item.icon_path ? await decryptStr(item.icon_path) : null
 
     // Generate TOTP token
-    const token = await generateTOTP({
+    const token = generateTOTP({
+      issuer: item.issuer,
       secret: secret,
       period: item.period,
       digits: item.digits,
       algorithm: item.algorithm,
+      label: item.user_identity,
     })
 
     const result = {
