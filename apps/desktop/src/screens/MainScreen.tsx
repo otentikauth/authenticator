@@ -29,7 +29,7 @@ export const MainScreen = (): JSX.Element => {
 
   // Fetch decrypted vaults data.
   // TODO: Use LyraSearch for local search indexing.
-  const { isLoading, error, data, refetch }: any = useGetCollections({ filter })
+  const { isLoading, error, data, refetch }: any = useGetCollections(filter)
 
   useEffect(() => {
     if (isFetching) {

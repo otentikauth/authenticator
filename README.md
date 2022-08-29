@@ -130,9 +130,9 @@ Currently, Aris Ripandi ([@riipandi](https://twitter.com/riipandi)) is the only 
 
 Otentik Authenticator is variously licensed under a number of different licenses.
 
-The source code Otentik Authenticator for macOS, iOS, Android, and browser extensions are available to everyone
-under the terms of [Apache License 2.0][choosealicense]. A copy of each license can be found in each project
-[packages](./apps/) and [libraries](./libs/).
+The source code Otentik Authenticator for macOS, iOS, and Android are available to everyone under the terms of
+[Apache License 2.0][choosealicense]. A copy of each license can be found in each project [packages](./apps/)
+and [libraries](./libs/).
 
 The binary distributions of Otentik Authenticator and the [Otentik managed service](https://vault.otentik.app)
 are copyrighted.
