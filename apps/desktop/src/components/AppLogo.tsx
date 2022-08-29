@@ -10,10 +10,8 @@ export const AppLogo: FC<AppLogoProps> = ({ ...props }) => {
       {...props}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width={800}
       zoomAndPan="magnify"
       viewBox="0 0 600 179.999997"
-      height={240}
       preserveAspectRatio="xMidYMid meet"
     >
       <defs>

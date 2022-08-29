@@ -59,7 +59,7 @@ export const AuthScreen = () => {
 
   return (
     <>
-      <div className="absolute top-0 right-0 z-40 flex h-14 items-center px-4">
+      <div className="absolute top-0 right-0 z-10 flex h-14 items-center px-4">
         <div className="relative">
           <div>
             <button

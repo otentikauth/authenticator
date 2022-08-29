@@ -129,7 +129,7 @@ export const AppMenu = () => {
             {!locked && (
               <>
                 <Menu.Item>
-                  {({ active }) => (
+                  {({ active }: { active: boolean }) => (
                     <button
                       type="button"
                       className={classNames(
@@ -145,7 +145,7 @@ export const AppMenu = () => {
                 </Menu.Item>
                 <MenuDivider />
                 <Menu.Item>
-                  {({ active }) => (
+                  {({ active }: { active: boolean }) => (
                     <button
                       type="button"
                       className={classNames(
@@ -160,7 +160,7 @@ export const AppMenu = () => {
                   )}
                 </Menu.Item>
                 <Menu.Item>
-                  {({ active }) => (
+                  {({ active }: { active: boolean }) => (
                     <button
                       type="button"
                       className={classNames(
@@ -176,7 +176,7 @@ export const AppMenu = () => {
                 </Menu.Item>
                 <MenuDivider />
                 <Menu.Item>
-                  {({ active }) => (
+                  {({ active }: { active: boolean }) => (
                     <button
                       type="button"
                       className={classNames(
@@ -191,7 +191,7 @@ export const AppMenu = () => {
                   )}
                 </Menu.Item>
                 <Menu.Item>
-                  {({ active }) => (
+                  {({ active }: { active: boolean }) => (
                     <button
                       type="button"
                       className={classNames(
@@ -207,7 +207,7 @@ export const AppMenu = () => {
                 </Menu.Item>
                 <MenuDivider />
                 <Menu.Item>
-                  {({ active }) => (
+                  {({ active }: { active: boolean }) => (
                     <button
                       type="button"
                       className={classNames(
@@ -238,7 +238,7 @@ export const AppMenu = () => {
             </Menu.Item>
             <MenuDivider />
             <Menu.Item>
-              {({ active }) => (
+              {({ active }: { active: boolean }) => (
                 <button
                   type="button"
                   className={classNames(
