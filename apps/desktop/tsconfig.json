@@ -21,7 +21,7 @@
         "jsx": "react-jsx"
     },
     "files": [],
-    "include": ["src", "vite.config.ts"],
+    "include": ["vite.config.ts"],
     "references": [
         {
             "path": "./tsconfig.app.json"
