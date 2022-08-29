@@ -15,9 +15,7 @@ export const ConfirmDialog: FC<ConfirmDialogProps> = (props) => {
   const { children, open, onClose, title, onConfirm } = props
   const cancelButtonRef = useRef(null)
 
-  return !open ? (
-    <></>
-  ) : (
+  return (
     <DialogTransition
       isOpen={open}
       initialFocus={cancelButtonRef}

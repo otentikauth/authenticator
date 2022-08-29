@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@faker-js/faker': ^7.4.0
   '@fontsource/inter': ^4.5.12
   '@headlessui/react': ^1.6.6
   '@heroicons/react': ^2.0.8
@@ -49,6 +48,7 @@ specifiers:
   jest: 27.5.1
   lint-staged: ^13.0.3
   nx: 14.5.10
+  otpauth: ^8.0.2
   postcss: ^8.4.16
   prettier: ^2.7.1
   prettier-plugin-tailwindcss: ^0.1.13
@@ -79,6 +79,7 @@ dependencies:
   clipboardy: 3.0.0
   core-js: 3.25.0
   inquirer: 9.1.0
+  otpauth: 8.0.2
   react: 18.2.0
   react-detect-offline: 2.4.5
   react-dom: 18.2.0_react@18.2.0
@@ -90,7 +91,6 @@ dependencies:
   zustand: 4.1.1_react@18.2.0
 
 devDependencies:
-  '@faker-js/faker': 7.4.0
   '@fontsource/inter': 4.5.12
   '@nrwl/cli': 14.5.10
   '@nrwl/eslint-plugin-nx': 14.5.10_mkfqjmeize2qesywaebju6tdq4
@@ -1556,11 +1556,6 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@faker-js/faker/7.4.0:
-    resolution: {integrity: sha512-xDd3Tvkt2jgkx1LkuwwxpNBy/Oe+LkZBTwkgEFTiWpVSZgQ5sc/LenbHKRHbFl0dq/KFeeq/szyyPtpJRKY0fg==}
-    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
   /@fontsource/inter/4.5.12:
@@ -7606,6 +7601,10 @@ packages:
       graceful-fs: 4.2.10
     dev: true
 
+  /jssha/3.2.0:
+    resolution: {integrity: sha512-QuruyBENDWdN4tZwJbQq7/eAK85FqrI4oDbXjy5IBhYD+2pTJyBUWZe8ctWaCkrV0gy6AaelgOZZBMeswEa/6Q==}
+    dev: false
+
   /jsx-ast-utils/3.3.3:
     resolution: {integrity: sha512-fYQHZTZ8jSfmWZ0iyzfwiU4WDX4HpHbMCZ3gPlWYiCl3BoeOTsqKBqnTVfH2rYT7eP5c3sVbeSPHnnJOaTrWiw==}
     engines: {node: '>=4.0'}
@@ -8409,6 +8408,12 @@ packages:
   /os-tmpdir/1.0.2:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /otpauth/8.0.2:
+    resolution: {integrity: sha512-Hj5IvDdhte1dmjBkWZ3K8DfQVt4LQycd4mtRVyRTWtYiXuqaDSF4+d7UDPqZO/JRWXDktEmDHqymA+hHj9NEqQ==}
+    dependencies:
+      jssha: 3.2.0
     dev: false
 
   /p-finally/1.0.0:

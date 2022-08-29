@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { useStores } from '../stores/stores'
 
 import { parseCollections } from '../utils/array-helpers'
 import { localData } from '../utils/storage'
@@ -10,6 +11,7 @@ type GetCollectionType = {
 }
 
 export const useGetCollections = ({ filter }: GetCollectionType) => {
+  const locked = useStores((state) => state.locked)
   const refreshTime = 30000 // How frequently you want to refresh the data, in ms
   // const user_id = useAuth()?.user?.id
 
@@ -29,6 +31,8 @@ export const useGetCollections = ({ filter }: GetCollectionType) => {
       initialData: [],
       refetchInterval: refreshTime,
       // select: (data: any) => data.find((item: any) => item),
+      // Only fetch when screen unloced
+      enabled: !locked,
     }
   )
 }

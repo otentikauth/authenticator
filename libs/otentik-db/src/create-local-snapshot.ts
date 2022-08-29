@@ -4,7 +4,7 @@ async function createLocalSnapshot() {
   // eslint-disable-next-line
   const { execSync } = require('child_process')
 
-  console.log('========== Create Snapshot ==========')
+  console.info('========== Create Snapshot ==========')
 
   const now = new Date()
   const inquirer = await import('inquirer')
