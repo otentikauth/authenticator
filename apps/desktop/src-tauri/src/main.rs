@@ -29,7 +29,7 @@ fn main() {
       });
 
       let win = app.get_window("main").unwrap();
-      win.set_transparent_titlebar(false, true);
+      win.set_transparent_titlebar(true, true);
 
       // only include this code on debug builds
       #[cfg(debug_assertions)]

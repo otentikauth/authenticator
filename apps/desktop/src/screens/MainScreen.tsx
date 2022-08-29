@@ -32,8 +32,6 @@ export const MainScreen = (): JSX.Element => {
     setForceFetch(false)
   }
 
-  // console.log('MAIN SCREEN', data)
-
   return (
     <div className="z-40 pt-16">
       <AppMenu />
