@@ -1,13 +1,12 @@
-// TODO: FIX React not defined causing by Vite
-// @ts-nocheck
-import * as React from 'react'
-
-function App() {
+export default function App() {
   return (
     <div>
-      <h1 className="text-6xl text-white">Welcome to Tauri!</h1>
+      <div id="welcome">
+        <h1>
+          <span> Hello there, </span>
+          Welcome to Nx 👋
+        </h1>
+      </div>
     </div>
   )
 }
-
-export default App

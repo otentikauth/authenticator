@@ -10,34 +10,48 @@
             "options": {
                 "outputPath": "dist/apps/desktop",
                 "baseHref": "/",
-                "configFile": "@nxext/vite/plugins/vite"
+                "configFile": "@nxext/vite/plugins/vite",
+                "frameworkConfigFile": "@nxext/react/plugins/vite"
             },
             "configurations": {
+                "development": {
+                    "extractLicenses": false,
+                    "optimization": false,
+                    "sourceMap": true,
+                    "vendorChunk": true
+                },
                 "production": {
                     "fileReplacements": [
                         {
                             "replace": "apps/desktop/src/environments/environment.ts",
                             "with": "apps/desktop/src/environments/environment.prod.ts"
                         }
-                    ]
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": false,
+                    "extractLicenses": true,
+                    "vendorChunk": false
                 }
             }
         },
         "serve": {
             "executor": "@nxext/vite:dev",
+            "defaultConfiguration": "development",
             "options": {
                 "outputPath": "dist/apps/desktop",
                 "baseHref": "/",
-                "configFile": "@nxext/vite/plugins/vite"
+                "configFile": "@nxext/vite/plugins/vite",
+                "frameworkConfigFile": "@nxext/react/plugins/vite"
             },
             "configurations": {
+                "development": {
+                    "buildTarget": "desktop:build:development"
+                },
                 "production": {
-                    "fileReplacements": [
-                        {
-                            "replace": "apps/desktop/src/environments/environment.ts",
-                            "with": "apps/desktop/src/environments/environment.prod.ts"
-                        }
-                    ]
+                    "buildTarget": "desktop:build:production",
+                    "hmr": false
                 }
             }
         },
@@ -45,7 +59,7 @@
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
-                "lintFilePatterns": ["apps/desktop/**/*.{ts,js,tsx,jsx}"]
+                "lintFilePatterns": ["apps/desktop/**/*.{ts,tsx,js,jsx}"]
             }
         },
         "test": {
