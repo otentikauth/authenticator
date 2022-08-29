@@ -4,7 +4,7 @@ version = "0.2.0"
 description = "Open Source two factor authenticator"
 authors = ["Aris Ripandi <aris@duck.com>"]
 license = "Apache-2.0"
-repository = "https://github.com/riipandi/otentik-authenticator-desktop"
+repository = "https://github.com/otentikapp/clients"
 edition = "2021"
 rust-version = "1.63"
 

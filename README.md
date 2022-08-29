@@ -1,6 +1,6 @@
 <p align="center"><img src="./banner.svg" width="500" height="150" alt="Project Logo"></p>
 <p align="center">
-    <a href="https://github.com/riipandi/otentik-authenticator-desktop/pulse">
+    <a href="https://github.com/otentikapp/clients/pulse">
         <img src="https://img.shields.io/badge/Contributions-welcome-blue.svg?style=flat-square" alt="Contribution welcome">
     </a>
     <a href="https://twitter.com/riipandi">
@@ -30,7 +30,7 @@ Watch the [demo video](https://youtu.be/5hPbu7xgFl4) to see how it works.
 Is this application finished yet? Yes and no. The main functions (OTP code generator and synchronization) are completed.
 I want this app to be available in multi-platform and on mobile devices.
 
-You can download the binary at the [release page](https://github.com/riipandi/otentik-authenticator-desktop/releases).
+You can download the binary at the [release page](https://github.com/otentikapp/clients/releases).
 Currently only supports macOS with Intel chipset. Windows, Linux, and mobile versions are included in the roadmap.
 
 ## Migrating
