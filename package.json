@@ -10,39 +10,75 @@
         "tauri": "tauri"
     },
     "dependencies": {
+        "@headlessui/react": "^1.6.6",
+        "@heroicons/react": "^2.0.8",
+        "@supabase/supabase-js": "~1.35.6",
+        "@tanstack/react-query": "^4.2.3",
         "@tauri-apps/api": "^1.0.2",
+        "clipboardy": "^3.0.0",
         "inquirer": "^9.1.0",
+        "react-detect-offline": "^2.4.5",
         "react-dom": "^18.2.0",
+        "react-hot-toast": "^2.3.0",
+        "react-hotkeys-hook": "^3.4.7",
         "react": "^18.2.0",
-        "tslib": "^2.4.0"
+        "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#ff1556a8",
+        "tslib": "^2.4.0",
+        "zustand": "^4.1.1"
     },
     "devDependencies": {
+        "@faker-js/faker": "^7.4.0",
+        "@fontsource/inter": "^4.5.12",
         "@nrwl/cli": "14.5.10",
         "@nrwl/eslint-plugin-nx": "14.5.10",
         "@nrwl/jest": "14.5.10",
         "@nrwl/linter": "14.5.10",
         "@nrwl/nx-cloud": "latest",
+        "@nrwl/react": "^14.5.10",
         "@nrwl/workspace": "14.5.10",
         "@nxext/vite": "^14.0.3",
+        "@tailwindcss/aspect-ratio": "^0.4.0",
+        "@tailwindcss/forms": "^0.5.2",
+        "@tailwindcss/line-clamp": "^0.4.0",
+        "@tailwindcss/typography": "^0.5.4",
         "@tauri-apps/cli": "^1.0.5",
         "@types/inquirer": "^9.0.1",
         "@types/jest": "27.4.1",
         "@types/node": "18.7.13",
+        "@types/react-detect-offline": "^2.4.1",
         "@types/react-dom": "^18.0.6",
         "@types/react": "^18.0.17",
         "@typescript-eslint/eslint-plugin": "^5.35.1",
         "@typescript-eslint/parser": "^5.35.1",
         "@vitejs/plugin-react": "^2.0.1",
+        "clsx": "^1.2.1",
+        "csstype": "^3.1.0",
         "eslint-config-prettier": "8.5.0",
         "eslint-plugin-import": "2.26.0",
         "eslint": "~8.23.0",
+        "husky": "^8.0.1",
         "jest": "27.5.1",
+        "lint-staged": "^13.0.3",
         "nx": "14.5.10",
+        "postcss": "^8.4.16",
+        "prettier-plugin-tailwindcss": "^0.1.13",
         "prettier": "^2.7.1",
+        "tailwind-scrollbar-hide": "^1.1.7",
+        "tailwindcss": "^3.1.8",
         "ts-jest": "27.1.4",
         "ts-node": "10.9.1",
         "typescript": "~4.7.4",
         "vite-plugin-eslint": "1.8.1",
         "vite": "^3.0.9"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,jsx,json,css,scss,ts,tsx,html,graphql}": [
+            "pnpm run format --uncommitted"
+        ]
     }
 }

@@ -1,18 +1,13 @@
 {
     "extends": ["../../.eslintrc.json"],
-    "ignorePatterns": ["!**/*"],
+    "ignorePatterns": ["!**/*", "src-tauri", "public"],
     "overrides": [
         {
-            "files": ["*.ts", "*.js", "*.tsx", "*.jsx"],
-            "rules": {}
-        },
-        {
-            "files": ["*.ts", "*.js", "*.tsx", "*.jsx"],
-            "rules": {}
-        },
-        {
-            "files": ["*.ts", "*.js", "*.tsx", "*.jsx"],
-            "rules": {}
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "rules": {
+                "@typescript-eslint/ban-ts-comment": "off",
+                "@typescript-eslint/no-explicit-any": "off"
+            }
         }
     ]
 }
