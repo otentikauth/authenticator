@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
-import { appWindow } from '@tauri-apps/api/window'
+import { invoke } from '@tauri-apps/api/tauri'
 import { ask, open, save } from '@tauri-apps/api/dialog'
 import { listen } from '@tauri-apps/api/event'
 import type { EventName } from '@tauri-apps/api/event'
@@ -36,8 +36,7 @@ export const AppMenu = () => {
 
   useEffect(() => {
     // Listen tauri event
-    listen('menu-event', (e) => {
-      console.log('LISTEN', e.payload)
+    listen('app-event', (e) => {
       setMenuPayload(e.payload)
       setListenTauriEvent(true)
     })
@@ -136,7 +135,7 @@ export const AppMenu = () => {
       resetStates()
       // wait for screen locked before quitting
       await delay(1000)
-      appWindow.close()
+      await invoke('exit_app')
     }
   }
 

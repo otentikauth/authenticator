@@ -1,12 +1,20 @@
+// Copyright 2022 Aris Ripandi <aris@duck.com>
+// SPDX-License-Identifier: Apache-2.0
+
 #![cfg_attr(
   all(not(debug_assertions), target_os = "windows"),
   windows_subsystem = "windows"
+)]
+#![allow(
+    // Clippy bug: https://github.com/rust-lang/rust-clippy/issues/7422
+    clippy::nonstandard_macro_braces,
 )]
 
 #[cfg(target_os = "linux")]
 use std::path::PathBuf;
 
 use cocoa::appkit::{NSWindow, NSWindowStyleMask, NSWindowTitleVisibility};
+// use tauri::api::dialog::ask;
 use tauri::{Manager, Runtime, SystemTray, SystemTrayEvent, Window};
 use tauri_plugin_store::PluginBuilder;
 
@@ -14,66 +22,70 @@ mod menu;
 mod otp_generator;
 mod security;
 
+#[tauri::command]
+fn exit_app(handle: tauri::AppHandle) {
+  handle.exit(0);
+}
+
 fn main() {
   let system_tray = SystemTray::new();
-  let app = tauri::Builder::default();
 
-  app
+  tauri::Builder::default()
     .plugin(PluginBuilder::default().build())
     .menu(menu::menu())
     .on_menu_event(|event| match event.menu_item_id() {
       "quit" => {
         let _ = event
           .window()
-          .emit("menu-event", event.menu_item_id())
+          .emit("app-event", event.menu_item_id())
           .unwrap();
       }
       "close" => {
         let _ = event
           .window()
-          .emit("menu-event", event.menu_item_id())
+          .emit("app-event", event.menu_item_id())
           .unwrap();
       }
       "export" => {
         let _ = event
           .window()
-          .emit("menu-event", event.menu_item_id())
+          .emit("app-event", event.menu_item_id())
           .unwrap();
       }
       "import" => {
         let _ = event
           .window()
-          .emit("menu-event", event.menu_item_id())
+          .emit("app-event", event.menu_item_id())
           .unwrap();
       }
       "lock_vault" => {
         let _ = event
           .window()
-          .emit("menu-event", event.menu_item_id())
+          .emit("app-event", event.menu_item_id())
           .unwrap();
       }
       "new_item" => {
         let _ = event
           .window()
-          .emit("menu-event", event.menu_item_id())
+          .emit("app-event", event.menu_item_id())
           .unwrap();
       }
       "signout" => {
         let _ = event
           .window()
-          .emit("menu-event", event.menu_item_id())
+          .emit("app-event", event.menu_item_id())
           .unwrap();
       }
       "sync_vault" => {
         let _ = event
           .window()
-          .emit("menu-event", event.menu_item_id())
+          .emit("app-event", event.menu_item_id())
           .unwrap();
       }
       "update_check" => {
         let _ = event
           .window()
-          .emit("menu-event", event.menu_item_id())
+          .emit("app-event", event.menu_item_id())
           .unwrap();
       }
       _ => {}
@@ -121,9 +133,26 @@ fn main() {
       security::create_hash,
       security::verify_hash,
       security::md5_hash,
+      exit_app,
     ])
-    .run(tauri::generate_context!())
-    .expect("error while running tauri application");
+    .build(tauri::generate_context!())
+    .expect("error while running tauri application")
+    .run(|app_handle, event| match event {
+      tauri::RunEvent::ExitRequested { api, .. } => {
+        api.prevent_exit();
+        app_handle.exit(0);
+
+        // TODO: call exit method from the frontend!
+        // let window = app_handle.get_window("main").unwrap();
+        // ask(Some(&window), "Tauri", "Is Tauri awesome?", |answer| {
+        //   if answer {
+        //     app_handle.exit(0);
+        //   }
+        // });
+        // window.emit("app-event", "quit").unwrap();
+      }
+      _ => {}
+    })
 }
 
 pub trait WindowExt {
