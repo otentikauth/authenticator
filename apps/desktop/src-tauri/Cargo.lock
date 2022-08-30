@@ -2224,7 +2224,7 @@ dependencies = [
 
 [[package]]
 name = "otentik-authenticator"
-version = "0.6.0"
+version = "0.6.1"
 dependencies = [
  "bcrypt",
  "cocoa",

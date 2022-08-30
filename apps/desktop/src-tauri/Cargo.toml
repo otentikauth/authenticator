@@ -2,7 +2,7 @@
 
 [package]
 name = "otentik-authenticator"
-version = "0.6.0"
+version = "0.6.1"
 description = "Open Source two factor authenticator"
 authors = ["Aris Ripandi <aris@duck.com>"]
 license = "Apache-2.0"
