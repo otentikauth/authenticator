@@ -140,6 +140,8 @@ export const AppMenu = () => {
   }
 
   const handleSignOut = async () => {
+    // const resp = await invoke('get_device_info')
+    // console.log('DEBUG', resp)
     const yes = await ask('Are you sure?', { title: 'Confirm sign out', type: 'warning' })
     if (yes) {
       resetStates()

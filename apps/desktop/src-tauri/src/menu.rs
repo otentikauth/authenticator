@@ -12,7 +12,7 @@ pub(crate) fn menu() -> Menu {
     .version(String::from("0.6.0"))
     .authors(vec![String::from("Aris Ripandi")])
     .comments(String::from("Open Source two factor authenticator"))
-    .copyright(String::from("Apache-2.0 License"))
+    .copyright(String::from("Copyright © Aris Ripandi"))
     .license(String::from("Apache-2.0 License"))
     .website(String::from("https://otentik.app/authenticator"))
     .website_label(String::from("Homepage"));
