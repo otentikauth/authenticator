@@ -106,6 +106,7 @@ Read more at: <https://tauri.app/v1/guides/distribution/updater/#signing-updates
 -   [ ] Create mobile version
 -   [ ] Create Windows version
 -   [ ] Create Linux version
+-   [ ] Code optimizations
 
 ## Security Issues
 
