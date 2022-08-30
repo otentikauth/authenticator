@@ -39,9 +39,10 @@ export const AuthScreen = () => {
       const hashedPassphrase = await md5Hash(password)
       await localData.set('passphrase', hashedPassphrase)
       setLoading(false)
+      resetForm()
     }
 
-    return resetForm()
+    return
   }
 
   const handleRegister = async () => {
@@ -52,7 +53,8 @@ export const AuthScreen = () => {
     if (error) return toast.error(error.message)
     toast.success('Check your email to verify your account!')
     setActionIsLogin(true)
-    return resetForm()
+    resetForm()
+    return
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
