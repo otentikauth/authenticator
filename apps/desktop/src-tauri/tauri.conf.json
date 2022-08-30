@@ -22,6 +22,12 @@
             "path": {
 			    "all": true
             },
+            "notification": {
+                "all": true
+            },
+            "os": {
+                "all": true
+            },
             "http": {
                 "scope": [
                     "https://ifconfig.me/*",
