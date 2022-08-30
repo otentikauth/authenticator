@@ -1,5 +1,4 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import { useHotkeys } from 'react-hotkeys-hook'
 import { FC, useRef } from 'react'
 
 interface ISearchBar {
@@ -9,7 +8,6 @@ interface ISearchBar {
 
 export const SearchBar: FC<ISearchBar> = ({ keyword, setKeyword }) => {
   const searchInputRef = useRef<HTMLInputElement>(null)
-  useHotkeys('ctrl+f, command+f', () => searchInputRef.current?.focus())
 
   return (
     <div className="fixed left-0 right-0 z-10 mx-auto -mt-1 flex max-w-sm justify-between bg-gray-900 px-4 pb-5">

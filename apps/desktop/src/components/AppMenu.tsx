@@ -1,6 +1,8 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { appWindow } from '@tauri-apps/api/window'
 import { ask, open, save } from '@tauri-apps/api/dialog'
+import { listen } from '@tauri-apps/api/event'
+import type { EventName } from '@tauri-apps/api/event'
 
 import { Menu, Transition } from '@headlessui/react'
 import {
@@ -13,7 +15,6 @@ import {
   ArrowUturnDownIcon,
 } from '@heroicons/react/24/outline'
 import { Bars3Icon } from '@heroicons/react/24/solid'
-import { useHotkeys } from 'react-hotkeys-hook'
 
 import { useStores } from '../stores/stores'
 import { classNames } from '../utils/ui-helpers'
@@ -29,6 +30,63 @@ export const AppMenu = () => {
   const setLockStreenState = useStores((state) => state.setLockStreenState)
   const setFormCreateOpen = useStores((state) => state.setFormCreateOpen)
   const setForceFetch = useStores((state) => state.setForceFetch)
+
+  const [menuPayload, setMenuPayload] = useState<EventName | undefined | unknown>('')
+  const [listenTauriEvent, setListenTauriEvent] = useState(false)
+
+  useEffect(() => {
+    // Listen tauri event
+    listen('menu-event', (e) => {
+      console.log('LISTEN', e.payload)
+      setMenuPayload(e.payload)
+      setListenTauriEvent(true)
+    })
+  }, [setMenuPayload, setListenTauriEvent])
+
+  useEffect(() => {
+    if (listenTauriEvent) {
+      switch (menuPayload) {
+        case 'quit':
+          handleQuit()
+          break
+
+        case 'close':
+          handleQuit()
+          break
+
+        case 'export':
+          handleExport()
+          break
+
+        case 'import':
+          handleImport()
+          break
+
+        case 'lock_vault':
+          setLockStreenState(true)
+          break
+
+        case 'new_item':
+          setFormCreateOpen(true)
+          break
+
+        case 'signout':
+          handleSignOut()
+          break
+
+        case 'sync_vault':
+          setForceFetch(true)
+          break
+
+        case 'update_check':
+          break
+
+        default:
+          break
+      }
+    }
+    setListenTauriEvent(false)
+  }, [listenTauriEvent, menuPayload])
 
   // Reset all states before quit.
   const resetStates = () => {
@@ -89,9 +147,6 @@ export const AppMenu = () => {
       sbClient.auth.signOut().catch(console.error)
     }
   }
-
-  // Keyboard shortcut for lock screen
-  useHotkeys('ctrl+l, command+l', () => setLockStreenState(true))
 
   return (
     <div className="absolute top-0 right-0 z-30 flex h-14 items-center px-4">

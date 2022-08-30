@@ -39,7 +39,7 @@
         "bundle": {
             "active": true,
             "category": "Utility",
-            "copyright": "Copyright © 2022 Aris Ripandi",
+            "copyright": "Copyright © Aris Ripandi",
             "deb": {
                 "depends": []
             },

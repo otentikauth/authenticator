@@ -17,9 +17,9 @@ pub(crate) fn menu() -> Menu {
     .website(String::from("https://otentik.app/authenticator"))
     .website_label(String::from("Homepage"));
 
-  let m_app_check_update = CustomMenuItem::new("update-check", "Check for Updates");
+  let m_app_check_update = CustomMenuItem::new("update_check", "Check for Updates");
   // let m_app_preferences = CustomMenuItem::new("preferences", "Preferences");
-  let m_app_lock_vault = CustomMenuItem::new("lock-vault", "Lock Vault");
+  let m_app_lock_vault = CustomMenuItem::new("lock_vault", "Lock Vault");
   let m_app_signout = CustomMenuItem::new("signout", "Sign out");
 
   let m_app = Submenu::new(
@@ -39,10 +39,10 @@ pub(crate) fn menu() -> Menu {
   // ---------------------------------------------------------------------------------------------
   // File Menu
   // ---------------------------------------------------------------------------------------------
-  let m_file_new = CustomMenuItem::new("new-item", "New Item").accelerator("CmdOrControl+N");
+  let m_file_new = CustomMenuItem::new("new_item", "New Item").accelerator("CmdOrControl+N");
   let m_file_import = CustomMenuItem::new("import", "Import Data").accelerator("CmdOrControl+I");
   let m_file_export = CustomMenuItem::new("export", "Export Data").accelerator("CmdOrControl+E");
-  let m_file_sync = CustomMenuItem::new("sync-vault", "Sync Vault").accelerator("CmdOrControl+R");
+  let m_file_sync = CustomMenuItem::new("sync_vault", "Sync Vault").accelerator("CmdOrControl+R");
 
   let file_menu = Submenu::new(
     "File",

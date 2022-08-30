@@ -21,6 +21,63 @@ fn main() {
   app
     .plugin(PluginBuilder::default().build())
     .menu(menu::menu())
+    .on_menu_event(|event| match event.menu_item_id() {
+      "quit" => {
+        let _ = event
+          .window()
+          .emit("menu-event", event.menu_item_id())
+          .unwrap();
+      }
+      "close" => {
+        let _ = event
+          .window()
+          .emit("menu-event", event.menu_item_id())
+          .unwrap();
+      }
+      "export" => {
+        let _ = event
+          .window()
+          .emit("menu-event", event.menu_item_id())
+          .unwrap();
+      }
+      "import" => {
+        let _ = event
+          .window()
+          .emit("menu-event", event.menu_item_id())
+          .unwrap();
+      }
+      "lock_vault" => {
+        let _ = event
+          .window()
+          .emit("menu-event", event.menu_item_id())
+          .unwrap();
+      }
+      "new_item" => {
+        let _ = event
+          .window()
+          .emit("menu-event", event.menu_item_id())
+          .unwrap();
+      }
+      "signout" => {
+        let _ = event
+          .window()
+          .emit("menu-event", event.menu_item_id())
+          .unwrap();
+      }
+      "sync_vault" => {
+        let _ = event
+          .window()
+          .emit("menu-event", event.menu_item_id())
+          .unwrap();
+      }
+      "update_check" => {
+        let _ = event
+          .window()
+          .emit("menu-event", event.menu_item_id())
+          .unwrap();
+      }
+      _ => {}
+    })
     .setup(|app| {
       // Initialize updater and check if a new version is available.
       let handle = app.handle();

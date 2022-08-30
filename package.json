@@ -23,7 +23,6 @@
         "react-detect-offline": "^2.4.5",
         "react-dom": "^18.2.0",
         "react-hot-toast": "^2.3.0",
-        "react-hotkeys-hook": "^3.4.7",
         "regenerator-runtime": "0.13.7",
         "smart-array-filter": "^4.0.0",
         "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#67530781d86b73fae4ee03c17f43c76f09ae3400",
