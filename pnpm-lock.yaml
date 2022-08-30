@@ -56,7 +56,6 @@ specifiers:
   react-detect-offline: ^2.4.5
   react-dom: ^18.2.0
   react-hot-toast: ^2.3.0
-  react-hotkeys-hook: ^3.4.7
   react-test-renderer: 18.2.0
   regenerator-runtime: 0.13.7
   smart-array-filter: ^4.0.0
@@ -85,7 +84,6 @@ dependencies:
   react-detect-offline: 2.4.5
   react-dom: 18.2.0_react@18.2.0
   react-hot-toast: 2.3.0_vt6aeitzauirmcdhimiad2yjxy
-  react-hotkeys-hook: 3.4.7_biqbaboplfbrettd7655fr4n2y
   regenerator-runtime: 0.13.7
   smart-array-filter: 4.0.0
   tauri-plugin-store-api: github.com/tauri-apps/tauri-plugin-store/67530781d86b73fae4ee03c17f43c76f09ae3400
@@ -6452,10 +6450,6 @@ packages:
     hasBin: true
     dev: true
 
-  /hotkeys-js/3.9.4:
-    resolution: {integrity: sha512-2zuLt85Ta+gIyvs4N88pCYskNrxf1TFv3LR9t5mdAZIX8BcgQQ48F2opUptvHa6m8zsy5v/a0i9mWzTrlNWU0Q==}
-    dev: false
-
   /hpack.js/2.1.6:
     resolution: {integrity: sha512-zJxVehUdMGIKsRaNt7apO2Gqp0BdqW5yaiGHXXmbpvxgBYVZnAql+BJb4RO5ad2MgpbZKn5G6nMnegrH1FcNYQ==}
     dependencies:
@@ -9232,17 +9226,6 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     transitivePeerDependencies:
       - csstype
-    dev: false
-
-  /react-hotkeys-hook/3.4.7_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-+bbPmhPAl6ns9VkXkNNyxlmCAIyDAcWbB76O4I0ntr3uWCRuIQf/aRLartUahe9chVMPj+OEzzfk3CQSjclUEQ==}
-    peerDependencies:
-      react: '>=16.8.1'
-      react-dom: '>=16.8.1'
-    dependencies:
-      hotkeys-js: 3.9.4
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-is/16.13.1:
