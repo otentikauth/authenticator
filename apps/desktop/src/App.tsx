@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { sendNotification } from '@tauri-apps/api/notification'
 import { Offline, Online } from 'react-detect-offline'
@@ -55,12 +55,22 @@ export default function App() {
     <div className="mx-auto max-w-sm">
       <TitleBar />
 
-      <Offline polling={offlineDetectConfig} onChange={(online) => handleOffline(online)}>
+      <Offline
+        polling={offlineDetectConfig}
+        onChange={(online) => {
+          handleOffline(online)
+        }}
+      >
         <ExitButton />
         <OfflineScreen />
       </Offline>
 
-      <Online polling={offlineDetectConfig} onChange={(online) => handleOnline(online)}>
+      <Online
+        polling={offlineDetectConfig}
+        onChange={(online) => {
+          handleOnline(online)
+        }}
+      >
         <QueryClientProvider client={queryClient}>
           <MainScreen />
         </QueryClientProvider>

@@ -3,21 +3,18 @@ import { Dialog } from '@headlessui/react'
 import { EyeIcon, EyeSlashIcon, LockClosedIcon } from '@heroicons/react/24/outline'
 import { ExclamationCircleIcon } from '@heroicons/react/24/solid'
 
-import { useAuth } from '../hooks/useAuth'
 import { useStores } from '../stores/stores'
 import { classNames } from '../utils/ui-helpers'
 import { DialogTransition } from '../components/DialogTransition'
-import { md5Hash, verifyHash } from '../utils/string-helpers'
 import { LoaderScreen } from '../components/LoaderScreen'
-import { localData } from '../utils/storage'
 import { updateDeviceInfo } from '../utils/supabase'
+import { validatePassphrase } from '../utils/guards'
 
 export const LockScreen = () => {
-  const session = useAuth()
   const locked = useStores((state) => state.locked)
   const setLockStreenState = useStores((state) => state.setLockStreenState)
   const [error, setError] = useState<any>({ error: null, text: null })
-  const [passphrase, setPassphrase] = useState('')
+  const [password, setPassphrase] = useState('')
   const [inputType, setInputType] = useState('password')
   const [loading, setLoading] = useState(false)
 
@@ -28,23 +25,21 @@ export const LockScreen = () => {
   const handleUnlockAction = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (passphrase.length <= 1) {
+    if (password.length <= 1) {
       return setError({ error: true, text: 'Your password required!' })
     }
 
     setLoading(true)
-    const passphraseHash = session?.user?.user_metadata?.passphrase
-    const validPassphrase = await verifyHash(passphrase, passphraseHash)
+    // Compare with hashed passphrase in localStorage
+    const validPassphrase = await validatePassphrase(password)
+    setLoading(false)
 
     if (!validPassphrase) {
-      setLoading(false)
       return setError({ error: true, text: 'Invalid password!' })
     }
 
-    // Store hashed passphrase in localStorage
-    const hashedPassphrase = await md5Hash(passphrase)
-    await localData.set('passphrase', hashedPassphrase)
-    await updateDeviceInfo() // Update device information.
+    // Update device information.
+    await updateDeviceInfo()
 
     setError(null)
     setLoading(false)
@@ -70,14 +65,14 @@ export const LockScreen = () => {
               </div>
 
               <div className="mt-2">
-                <label htmlFor="passphrase" className="sr-only">
+                <label htmlFor="password" className="sr-only">
                   Passphrase
                 </label>
                 <div className="relative mt-1 rounded-md shadow-sm">
                   <input
                     type={inputType}
-                    name="passphrase"
-                    id="passphrase"
+                    name="password"
+                    id="password"
                     className={classNames(
                       error &&
                         'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500 ',

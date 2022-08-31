@@ -50,7 +50,7 @@ export const MainScreen = (): JSX.Element => {
     }, 1000)
 
     return () => clearInterval(myInterval)
-  }, [startTimer, isFetching, seconds])
+  }, [startTimer, isFetching, seconds, data])
 
   if (isLoading && !filter) return <LoaderScreen />
   if (!locked && error) return <ErrorScreen message={error.message} />

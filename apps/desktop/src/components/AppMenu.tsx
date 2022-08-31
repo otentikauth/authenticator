@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Fragment, useEffect, useState } from 'react'
 import { invoke } from '@tauri-apps/api/tauri'
 import { ask, open, save } from '@tauri-apps/api/dialog'
@@ -33,59 +34,6 @@ export const AppMenu = () => {
 
   const [menuPayload, setMenuPayload] = useState<EventName | undefined | unknown>('')
   const [listenTauriEvent, setListenTauriEvent] = useState(false)
-
-  useEffect(() => {
-    // Listen tauri event
-    listen('app-event', (e) => {
-      setMenuPayload(e.payload)
-      setListenTauriEvent(true)
-    })
-  }, [setMenuPayload, setListenTauriEvent])
-
-  useEffect(() => {
-    if (listenTauriEvent) {
-      switch (menuPayload) {
-        case 'quit':
-          handleQuit()
-          break
-
-        case 'close':
-          handleQuit()
-          break
-
-        case 'export':
-          handleExport()
-          break
-
-        case 'import':
-          handleImport()
-          break
-
-        case 'lock_vault':
-          setLockStreenState(true)
-          break
-
-        case 'new_item':
-          setFormCreateOpen(true)
-          break
-
-        case 'signout':
-          handleSignOut()
-          break
-
-        case 'sync_vault':
-          setForceFetch(true)
-          break
-
-        case 'update_check':
-          break
-
-        default:
-          break
-      }
-    }
-    setListenTauriEvent(false)
-  }, [listenTauriEvent, menuPayload])
 
   // Reset all states before quit.
   const resetStates = () => {
@@ -146,6 +94,56 @@ export const AppMenu = () => {
       sbClient.auth.signOut().catch(console.error)
     }
   }
+
+  useEffect(() => {
+    // Listen tauri event
+    listen('app-event', (e) => {
+      setMenuPayload(e.payload)
+      setListenTauriEvent(true)
+    })
+  }, [setMenuPayload, setListenTauriEvent])
+
+  useEffect(() => {
+    if (listenTauriEvent) {
+      switch (menuPayload) {
+        case 'quit':
+          handleQuit()
+          break
+
+        case 'close':
+          handleQuit()
+          break
+
+        case 'export':
+          handleExport()
+          break
+
+        case 'import':
+          handleImport()
+          break
+
+        case 'lock_vault':
+          setLockStreenState(true)
+          break
+
+        case 'new_item':
+          setFormCreateOpen(true)
+          break
+
+        case 'signout':
+          handleSignOut()
+          break
+
+        case 'sync_vault':
+          setForceFetch(true)
+          break
+
+        default:
+          break
+      }
+    }
+    setListenTauriEvent(false)
+  }, [listenTauriEvent, menuPayload])
 
   return (
     <div className="absolute top-0 right-0 z-30 flex h-14 items-center px-4">

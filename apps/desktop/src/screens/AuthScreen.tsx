@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast'
 import { sbClient, storeDeviceInfo } from '../utils/supabase'
 import { LoaderScreen } from '../components/LoaderScreen'
 import { classNames } from '../utils/ui-helpers'
-import { createHash, md5Hash } from '../utils/string-helpers'
+import { createHash, generatePassphrase } from '../utils/string-helpers'
 import { ExitButton } from '../components/ExitButton'
 import { TitleBar } from '../components/TitleBar'
 import { localData } from '../utils/storage'
@@ -36,7 +36,7 @@ export const AuthScreen = () => {
 
     if (user) {
       // If login success then store hashed passphrase in localStorage
-      const hashedPassphrase = await md5Hash(password)
+      const hashedPassphrase = await generatePassphrase(user.id, password)
       await localData.set('passphrase', hashedPassphrase)
       await storeDeviceInfo() // Store device information.
       setLoading(false)

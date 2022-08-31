@@ -5,12 +5,13 @@ use tauri::command;
 
 use bcrypt::{hash, verify, DEFAULT_COST};
 use magic_crypt::{new_magic_crypt, MagicCryptTrait};
-use md5::{Digest, Md5};
+use sha2::{Digest, Sha256};
 
 #[command]
 pub(crate) async fn encrypt_str(plain_str: String, passphrase: String) -> String {
   let mc = new_magic_crypt!(passphrase, 256);
   let encrypted = mc.encrypt_str_to_base64(plain_str);
+  // println!("Encrypted string: {:?}", encrypted);
   encrypted.into()
 }
 
@@ -34,15 +35,12 @@ pub(crate) async fn verify_hash(plaintext: String, hashed_str: String) -> bool {
 }
 
 #[command]
-pub(crate) async fn md5_hash(str: String) -> String {
-  let mut hasher = Md5::new();
-  hasher.update(&str);
-
-  let encoded = hasher.finalize();
-  let result = format!("{:x}", encoded);
-  // println!("MD5-encoded hash: {:?}", result);
-
-  result.into()
+pub(crate) async fn generate_passphrase(user_id: String, password: String) -> String {
+  let uid = user_id.replace("-", "").to_uppercase();
+  let hash = Sha256::new().chain_update(&uid).chain_update(&password).finalize();
+  let encoded = format!("{:x}", hash);
+  // println!("SHA2-encoded hash: {:?}", encoded);
+  encoded.into()
 }
 
 #[command]

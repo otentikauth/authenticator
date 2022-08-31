@@ -102,7 +102,7 @@ fn main() {
       security::decrypt_str,
       security::create_hash,
       security::verify_hash,
-      security::md5_hash,
+      security::generate_passphrase,
       exit_app,
     ])
     .build(tauri::generate_context!())
