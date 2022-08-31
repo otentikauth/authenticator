@@ -19,9 +19,7 @@ export const addSingleCollection = async (data: any) => {
 //   const time = new Date().toISOString()
 
 //   const user_id = session?.user?.id
-//   const uid_a = invoke('simple_uuid')
-//   const uid_b = invoke('simple_uuid')
-//   const unqiue_id = `${uid_a}-${uid_b}`
+// const unqiue_id = await invoke('generate_udevice_id', { uid: user_id })
 
 //   console.log('UNIQUE_ID', unqiue_id)
 

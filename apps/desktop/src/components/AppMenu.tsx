@@ -117,19 +117,16 @@ export const AppMenu = () => {
   }
 
   const handleExport = async () => {
-    // A81FA3E77A32-A745EEB89038
-    const resp = await invoke('generate_udevice_id', { uid: 'a745eeb8-9038-471a-a056-0f817f70e2e1' })
-    console.log('INVOKE', resp)
-    // const filePath = await save({
-    //   filters: [
-    //     {
-    //       name: 'Backup File',
-    //       extensions: ['json'],
-    //     },
-    //   ],
-    // })
+    const filePath = await save({
+      filters: [
+        {
+          name: 'Backup File',
+          extensions: ['json'],
+        },
+      ],
+    })
 
-    // await exportCollections(filePath)
+    await exportCollections(filePath)
   }
 
   const handleQuit = async () => {

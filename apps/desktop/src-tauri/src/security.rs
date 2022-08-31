@@ -35,16 +35,14 @@ pub(crate) async fn verify_hash(plaintext: String, hashed_str: String) -> bool {
 
 #[command]
 pub(crate) async fn md5_hash(str: String) -> String {
-  // let hash = md5(&str);
-  // let string_hash = hash.to_hex_string();
-  // string_hash.into()
-
   let mut hasher = Md5::new();
   hasher.update(&str);
-  let encoded = hasher.finalize();
-  println!("MD5-encoded hash: {:?}", encoded);
 
-  str.into()
+  let encoded = hasher.finalize();
+  let result = format!("{:x}", encoded);
+  // println!("MD5-encoded hash: {:?}", result);
+
+  result.into()
 }
 
 #[command]
