@@ -97,6 +97,7 @@ fn main() {
     .invoke_handler(tauri::generate_handler![
       otp_generator::generate_totp,
       sys_utils::get_device_info,
+      security::generate_udevice_id,
       security::encrypt_str,
       security::decrypt_str,
       security::create_hash,

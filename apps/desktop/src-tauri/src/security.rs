@@ -1,10 +1,11 @@
 extern crate bcrypt;
-extern crate easy_hasher;
+extern crate machine_uid;
+
+use tauri::command;
 
 use bcrypt::{hash, verify, DEFAULT_COST};
-use easy_hasher::easy_hasher::*;
 use magic_crypt::{new_magic_crypt, MagicCryptTrait};
-use tauri::command;
+use md5::{Digest, Md5};
 
 #[command]
 pub(crate) async fn encrypt_str(plain_str: String, passphrase: String) -> String {
@@ -34,7 +35,34 @@ pub(crate) async fn verify_hash(plaintext: String, hashed_str: String) -> bool {
 
 #[command]
 pub(crate) async fn md5_hash(str: String) -> String {
-  let hash = md5(&str);
-  let string_hash = hash.to_hex_string();
-  string_hash.into()
+  // let hash = md5(&str);
+  // let string_hash = hash.to_hex_string();
+  // string_hash.into()
+
+  let mut hasher = Md5::new();
+  hasher.update(&str);
+  let encoded = hasher.finalize();
+  println!("MD5-encoded hash: {:?}", encoded);
+
+  str.into()
+}
+
+#[command]
+pub(crate) async fn generate_udevice_id(uid: String) -> String {
+  let device_uuid: String = machine_uid::get().unwrap();
+
+  // Get trimmed device_uuid
+  let a_trimmed = device_uuid.replace("-", "");
+  let a_slice = &a_trimmed[..12];
+  let _a = a_slice.to_string();
+
+  // Get trimmed external uuid
+  let b_trimmed = uid.replace("-", "");
+  let b_slice = &b_trimmed[..12];
+  let _b = b_slice.to_string();
+
+  let new_id = _a + &_b;
+  let result = new_id.to_uppercase();
+
+  result.into()
 }

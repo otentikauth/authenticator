@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
 import { toast } from 'react-hot-toast'
 
-import { sbClient } from '../utils/supabase'
+import { sbClient, storeDeviceInfo } from '../utils/supabase'
 import { LoaderScreen } from '../components/LoaderScreen'
 import { classNames } from '../utils/ui-helpers'
 import { createHash, md5Hash } from '../utils/string-helpers'
@@ -38,11 +38,11 @@ export const AuthScreen = () => {
       // If login success then store hashed passphrase in localStorage
       const hashedPassphrase = await md5Hash(password)
       await localData.set('passphrase', hashedPassphrase)
+      // await storeDeviceInfo() // Store device information.
       setLoading(false)
-      resetForm()
     }
 
-    return
+    return resetForm()
   }
 
   const handleRegister = async () => {
@@ -52,8 +52,9 @@ export const AuthScreen = () => {
     setLoading(false)
     if (error) return toast.error(error.message)
     toast.success('Check your email to verify your account!')
-    setActionIsLogin(true)
     resetForm()
+    setActionIsLogin(true)
+
     return
   }
 

@@ -10,6 +10,7 @@ import { DialogTransition } from '../components/DialogTransition'
 import { md5Hash, verifyHash } from '../utils/string-helpers'
 import { LoaderScreen } from '../components/LoaderScreen'
 import { localData } from '../utils/storage'
+import { updateDeviceInfo } from '../utils/supabase'
 
 export const LockScreen = () => {
   const session = useAuth()
@@ -43,6 +44,7 @@ export const LockScreen = () => {
     // Store hashed passphrase in localStorage
     const hashedPassphrase = await md5Hash(passphrase)
     await localData.set('passphrase', hashedPassphrase)
+    // await updateDeviceInfo() // Update device information.
 
     setError(null)
     setLoading(false)

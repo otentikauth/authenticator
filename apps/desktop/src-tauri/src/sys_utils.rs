@@ -4,7 +4,7 @@ use sysinfo::{System, SystemExt};
 use tauri::command;
 
 #[derive(serde::Serialize)]
-pub struct Devices {
+pub struct DeviceInfo {
   device_uuid: String,
   os_platform: String,
   os_version: String,
@@ -12,7 +12,7 @@ pub struct Devices {
 }
 
 #[command]
-pub(crate) async fn get_device_info() -> Result<Devices, String> {
+pub(crate) async fn get_device_info() -> Result<DeviceInfo, String> {
   // Initiate `sysinfo` instance. We use "new_all" to ensure that
   // all list of components already filled.
   let mut sys = System::new_all();
@@ -32,7 +32,7 @@ pub(crate) async fn get_device_info() -> Result<Devices, String> {
   // println!("System host name    : {:?}", sys_host_name);
   // println!("System machine id   : {:?}", sys_device_uuid);
 
-  Ok(Devices {
+  Ok(DeviceInfo {
     device_uuid: sys_device_uuid.into(),
     os_platform: sys_os_platform.into(),
     os_version: sys_os_version.into(),

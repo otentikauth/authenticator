@@ -28,7 +28,6 @@ export const MainScreen = (): JSX.Element => {
   const [seconds, setSeconds] = useState(0)
 
   // Fetch decrypted vaults data.
-  // TODO: Use LyraSearch for local search indexing.
   const { isLoading, error, data, refetch }: any = useGetCollections(filter)
 
   useEffect(() => {
@@ -39,7 +38,7 @@ export const MainScreen = (): JSX.Element => {
     }
 
     const myInterval = setInterval(() => {
-      if (startTimer && seconds > 0) {
+      if (data.length > 0 && startTimer && seconds > 0) {
         setPercentage(Math.trunc((300 * seconds) / 100))
         setSeconds(seconds - 1)
       }
