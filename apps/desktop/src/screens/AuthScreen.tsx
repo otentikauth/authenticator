@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { ArrowRightCircleIcon } from '@heroicons/react/24/solid'
 import { toast } from 'react-hot-toast'
 
-import { sbClient } from '../utils/supabase'
+import { sbClient, storeDeviceInfo } from '../utils/supabase'
 import { LoaderScreen } from '../components/LoaderScreen'
 import { classNames } from '../utils/ui-helpers'
-import { createHash, md5Hash } from '../utils/string-helpers'
+import { createHash, generatePassphrase } from '../utils/string-helpers'
 import { ExitButton } from '../components/ExitButton'
 import { TitleBar } from '../components/TitleBar'
 import { localData } from '../utils/storage'
@@ -36,13 +36,13 @@ export const AuthScreen = () => {
 
     if (user) {
       // If login success then store hashed passphrase in localStorage
-      const hashedPassphrase = await md5Hash(password)
+      const hashedPassphrase = await generatePassphrase(user.id, password)
       await localData.set('passphrase', hashedPassphrase)
+      await storeDeviceInfo() // Store device information.
       setLoading(false)
-      resetForm()
     }
 
-    return
+    return resetForm()
   }
 
   const handleRegister = async () => {
@@ -52,8 +52,9 @@ export const AuthScreen = () => {
     setLoading(false)
     if (error) return toast.error(error.message)
     toast.success('Check your email to verify your account!')
-    setActionIsLogin(true)
     resetForm()
+    setActionIsLogin(true)
+
     return
   }
 
@@ -72,7 +73,7 @@ export const AuthScreen = () => {
       <div className={classNames(actionIsLogin ? 'py-12' : 'py-0', 'flex min-h-full items-center justify-center px-6')}>
         <div className="w-full max-w-sm">
           <div>
-            <h2 className="mt-8 text-center text-xl font-semibold tracking-tight text-white">
+            <h2 className="mt-8 text-center text-2xl font-semibold tracking-tight text-white">
               {actionIsLogin ? 'Sign in to continue' : 'Create account'}
             </h2>
           </div>
@@ -142,18 +143,7 @@ export const AuthScreen = () => {
             </div>
           </form>
 
-          <div className="absolute left-0 bottom-0 flex w-full flex-col items-center justify-center space-y-3 py-10">
-            {/* <p className='text-center text-sm text-gray-300'>
-                        Forgot password?{' '}
-                        <a
-                            href='https://otentik.app/recovery?ref=authenticator'
-                            className='font-medium text-brand-500 hover:text-brand-600'
-                            rel='noreferrer noopener'
-                            target='_blank'
-                        >
-                            Reset
-                        </a>
-                    </p> */}
+          <div className="absolute left-0 bottom-0 flex w-full flex-col items-center justify-center space-y-4 py-8">
             <p className="text-center text-sm text-gray-300">
               {actionIsLogin ? "Dont' have account? " : 'Already have account? '}
               <button
@@ -163,6 +153,17 @@ export const AuthScreen = () => {
               >
                 {actionIsLogin ? 'Register' : 'Login'}
               </button>
+            </p>
+            <p className="text-center text-sm text-gray-300">
+              Forgot password?{' '}
+              <a
+                href="https://vault.otentik.app/recovery?ref=authenticator"
+                className="text-brand-500 hover:text-brand-600 font-medium"
+                rel="noreferrer noopener"
+                target="_blank"
+              >
+                Reset
+              </a>
             </p>
           </div>
         </div>

@@ -1,14 +1,14 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
 [package]
 name = "otentik-authenticator"
-version = "0.6.0"
+version = "0.7.0"
 description = "Open Source two factor authenticator"
 authors = ["Aris Ripandi <aris@duck.com>"]
 license = "Apache-2.0"
 repository = "https://github.com/otentikapp/clients"
 edition = "2021"
 rust-version = "1.63"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [build-dependencies]
 tauri-build = { version = "1.0.4", features = [] }
@@ -17,12 +17,14 @@ tauri-build = { version = "1.0.4", features = [] }
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "1.0.5", features = ["api-all", "macos-private-api", "system-tray", "updater"] }
+# uuid = { version = "1.1", features = ["v4", "fast-rng", "serde", "js"] }
 libreauth = { version = "^0.15", features = ["key", "oath", "pass"] }
-binascii = { version = "^0.1", features = ["encode", "decode"] }
+sha2 = { version = "0.10", default-features = false }
 cocoa = "0.24"
 magic-crypt = "^3.1"
 bcrypt = "^0.13"
-easy-hasher = "^2.2"
+sysinfo = "0.26"
+machine-uid = "0.2"
 
 [dependencies.tauri-plugin-store]
 git = "https://github.com/tauri-apps/tauri-plugin-store"

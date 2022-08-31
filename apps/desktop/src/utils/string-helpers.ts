@@ -50,8 +50,8 @@ export const decryptStr = async (encryptedStr: string): Promise<any> => {
   return await invoke('decrypt_str', { encryptedStr, passphrase })
 }
 
-export const md5Hash = async (str: string): Promise<any> => {
-  return await invoke('md5_hash', { str })
+export const generatePassphrase = async (userId: string, password: string): Promise<any> => {
+  return await invoke('generate_passphrase', { userId, password })
 }
 
 export const createHash = async (plaintext: string): Promise<any> => {

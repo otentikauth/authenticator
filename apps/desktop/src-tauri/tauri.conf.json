@@ -8,7 +8,7 @@
     },
     "package": {
         "productName": "Authenticator",
-        "version": "0.6.0"
+        "version": "0.7.0"
     },
     "tauri": {
         "allowlist": {
@@ -21,6 +21,12 @@
             },
             "path": {
 			    "all": true
+            },
+            "notification": {
+                "all": true
+            },
+            "os": {
+                "all": true
             },
             "http": {
                 "scope": [

@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { QueryClientProvider } from '@tanstack/react-query'
+import { sendNotification } from '@tauri-apps/api/notification'
 import { Offline, Online } from 'react-detect-offline'
 import { toast } from 'react-hot-toast'
 
@@ -12,6 +13,7 @@ import { OfflineScreen } from './screens/OfflineScreen'
 import { AuthScreen } from './screens/AuthScreen'
 import { MainScreen } from './screens/MainScreen'
 import { queryClient } from './utils/queries'
+import { useNotification } from './hooks/useNotification'
 
 const offlineDetectConfig = {
   url: 'https://ifconfig.me/ip',
@@ -22,6 +24,7 @@ const offlineDetectConfig = {
 
 export default function App() {
   const session = useAuth()
+  const allowNotification = useNotification()
 
   useEffect(() => {
     disableBrowserEvents('contextmenu')
@@ -29,11 +32,21 @@ export default function App() {
   })
 
   const handleOffline = (online: boolean) => {
-    !online && toast.error('Your internet connection is lost!')
+    if (!online) {
+      const message = 'Your internet connection is lost!'
+      return allowNotification
+        ? sendNotification({ title: 'Otentik Authenticator', body: message })
+        : toast.error(message)
+    }
   }
 
   const handleOnline = (online: boolean) => {
-    online && toast.success('Your internet connection is back!')
+    if (online) {
+      const message = 'Your internet connection is back!'
+      return allowNotification
+        ? sendNotification({ title: 'Otentik Authenticator', body: message })
+        : toast.success(message)
+    }
   }
 
   if (!session) return <AuthScreen />
@@ -42,12 +55,22 @@ export default function App() {
     <div className="mx-auto max-w-sm">
       <TitleBar />
 
-      <Offline polling={offlineDetectConfig} onChange={(online) => handleOffline(online)}>
+      <Offline
+        polling={offlineDetectConfig}
+        onChange={(online) => {
+          handleOffline(online)
+        }}
+      >
         <ExitButton />
         <OfflineScreen />
       </Offline>
 
-      <Online polling={offlineDetectConfig} onChange={(online) => handleOnline(online)}>
+      <Online
+        polling={offlineDetectConfig}
+        onChange={(online) => {
+          handleOnline(online)
+        }}
+      >
         <QueryClientProvider client={queryClient}>
           <MainScreen />
         </QueryClientProvider>
