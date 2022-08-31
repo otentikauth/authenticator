@@ -73,7 +73,7 @@ export const AuthScreen = () => {
       <div className={classNames(actionIsLogin ? 'py-12' : 'py-0', 'flex min-h-full items-center justify-center px-6')}>
         <div className="w-full max-w-sm">
           <div>
-            <h2 className="mt-8 text-center text-xl font-semibold tracking-tight text-white">
+            <h2 className="mt-8 text-center text-2xl font-semibold tracking-tight text-white">
               {actionIsLogin ? 'Sign in to continue' : 'Create account'}
             </h2>
           </div>
@@ -143,18 +143,7 @@ export const AuthScreen = () => {
             </div>
           </form>
 
-          <div className="absolute left-0 bottom-0 flex w-full flex-col items-center justify-center space-y-3 py-10">
-            {/* <p className='text-center text-sm text-gray-300'>
-                        Forgot password?{' '}
-                        <a
-                            href='https://otentik.app/recovery?ref=authenticator'
-                            className='font-medium text-brand-500 hover:text-brand-600'
-                            rel='noreferrer noopener'
-                            target='_blank'
-                        >
-                            Reset
-                        </a>
-                    </p> */}
+          <div className="absolute left-0 bottom-0 flex w-full flex-col items-center justify-center space-y-4 py-8">
             <p className="text-center text-sm text-gray-300">
               {actionIsLogin ? "Dont' have account? " : 'Already have account? '}
               <button
@@ -164,6 +153,17 @@ export const AuthScreen = () => {
               >
                 {actionIsLogin ? 'Register' : 'Login'}
               </button>
+            </p>
+            <p className="text-center text-sm text-gray-300">
+              Forgot password?{' '}
+              <a
+                href="https://vault.otentik.app/recovery?ref=authenticator"
+                className="text-brand-500 hover:text-brand-600 font-medium"
+                rel="noreferrer noopener"
+                target="_blank"
+              >
+                Reset
+              </a>
             </p>
           </div>
         </div>

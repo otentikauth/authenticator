@@ -16,36 +16,19 @@ export const addSingleCollection = async (data: any) => {
 export const storeDeviceInfo = async () => {
   const { device_uuid, os_platform, os_version, host_name } = await invoke('get_device_info')
   const session = sbClient.auth.session()
-  const time = new Date().toISOString()
 
   const user_id = session?.user?.id
   const unique_id = await invoke('generate_udevice_id', { uid: user_id })
+  const prepared = { user_id, device_uuid, unique_id, os_platform, os_version, host_name }
 
-  console.log('UNIQUE_ID', unique_id)
-
-  const prepared = {
-    user_id,
-    device_uuid,
-    unique_id,
-    os_platform,
-    os_version,
-    host_name,
-    activated_at: time,
-    last_online_at: time,
-  }
-
-  const { error, status } = await sbClient.from('devices').upsert(prepared, { onConflict: 'unique_id' })
-  console.log('DEBUG', status, error)
-  // return await sbClient.from('devices').insert(prepared).single()
+  return await sbClient.from('devices').upsert(prepared, { onConflict: 'unique_id' })
 }
 
-// export const updateDeviceInfo = async () => {
-//   const { device_uuid } = await invoke('get_device_info')
-//   const session = sbClient.auth.session()
-//   const time = new Date().toISOString()
+export const updateDeviceInfo = async () => {
+  const session = sbClient.auth.session()
+  const user_id = session?.user?.id
+  const unique_id = await invoke('generate_udevice_id', { uid: user_id })
+  const time = new Date().toISOString()
 
-//   return await sbClient
-//     .from('devices')
-//     .update({ last_online_at: time })
-//     .match({ user_id: session?.user?.id, device_uuid })
-// }
+  return await sbClient.from('devices').update({ last_online_at: time }).match({ user_id, unique_id })
+}
