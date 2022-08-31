@@ -101,7 +101,7 @@ Read more at: <https://tauri.app/v1/guides/distribution/updater/#signing-updates
 ## Roadmaps
 
 -   [ ] Account management
--   [ ] Export & import collections
+-   [x] Export & import collections
 -   [ ] Offline synchronization
 -   [ ] Create mobile version
 -   [ ] Create Windows version
