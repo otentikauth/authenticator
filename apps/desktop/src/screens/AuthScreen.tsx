@@ -38,7 +38,7 @@ export const AuthScreen = () => {
       // If login success then store hashed passphrase in localStorage
       const hashedPassphrase = await md5Hash(password)
       await localData.set('passphrase', hashedPassphrase)
-      // await storeDeviceInfo() // Store device information.
+      await storeDeviceInfo() // Store device information.
       setLoading(false)
     }
 

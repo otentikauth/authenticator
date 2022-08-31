@@ -2,14 +2,14 @@ create table devices (
   id BIGSERIAL PRIMARY KEY,
   user_id uuid references auth.users not null,
   device_uuid uuid not null,
-  unqiue_id varchar(24) not null,
+  unique_id varchar(24) not null,
   os_platform varchar(255) not null,
   os_version varchar(255) not null,
   host_name varchar(255) not null,
   alias_name varchar(255),
   activated_at timestamp with time zone default timezone('utc'::text, now()) not null,
   last_online_at timestamp with time zone default null,
-  unique(unqiue_id)
+  unique(unique_id)
 );
 
 alter table devices enable row level security;
