@@ -1,0 +1,40 @@
+name: "🪲 Bug Report"
+description: "If something isn't working as expected 🤔."
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to file a bug report! Please fill out this form as completely as possible.
+
+  - type: textarea
+    attributes:
+      label: Current and expected behavior
+      description: What is Otentik Authenticator doing and what you would expect instead?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: "Add any other context about the problem here. Please share screenshots where possible."
+
+  - type: textarea
+    attributes:
+      label: Operating System
+      description: |
+        What OS are you using?
+      placeholder: |
+        macOS Catalina? Windows 10? Ubuntu Linux?
+        Be as specific as possible.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: App Version
+      description: |
+        What's the Otentik version?
+      placeholder: |
+        The value of Otentik Authenticator app version.
+    validations:
+      required: true
