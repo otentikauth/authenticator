@@ -1,5 +1,8 @@
 <p align="center"><img src="./banner.svg" width="500" height="150" alt="Project Logo"></p>
 <p align="center">
+    <a href="https://github.com/riipandi/otentik-authenticator-desktop/releases/tag/latest">
+        <img src="https://github.com/riipandi/otentik-authenticator-desktop/actions/workflows/release.yml/badge.svg?branch=main" alt="Release Status">
+    </a>
     <a href="https://github.com/otentikapp/clients/pulse">
         <img src="https://img.shields.io/badge/Contributions-welcome-blue.svg?style=flat-square" alt="Contribution welcome">
     </a>
@@ -101,7 +104,7 @@ Read more at: <https://tauri.app/v1/guides/distribution/updater/#signing-updates
 ## Roadmaps
 
 -   [ ] Account management
--   [ ] Export & import collections
+-   [x] Export & import collections
 -   [ ] Offline synchronization
 -   [ ] Create mobile version
 -   [ ] Create Windows version
