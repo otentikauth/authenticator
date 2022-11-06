@@ -25,7 +25,11 @@ export const AuthScreen = () => {
   }
 
   const handleLogin = async () => {
-    const { user, error } = await sbClient.auth.signIn({ email, password })
+    const {
+      data: { user },
+      error,
+    } = await sbClient.auth.signInWithPassword({ email, password })
+
     setLoading(false)
 
     if (error && !user) {

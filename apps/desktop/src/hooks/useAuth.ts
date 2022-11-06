@@ -5,6 +5,7 @@ import { sbClient } from '../utils/supabase'
 export const useAuth = () => {
   const [session, setSession] = useState<Session | null>(null)
 
+  // TODO: migrate to Supabase SDK v2
   useEffect(() => {
     setSession(sbClient.auth.session())
 
@@ -12,8 +13,10 @@ export const useAuth = () => {
       setSession(session)
     })
 
+    // TODO: migrate to Supabase SDK v2
     return () => {
       authListener?.unsubscribe()
+      // sbClient.removeChannel(userListener)
     }
   }, [session])
 

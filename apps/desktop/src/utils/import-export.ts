@@ -6,7 +6,11 @@ import { encryptStr } from './string-helpers'
 import { sbClient } from './supabase'
 
 export async function importCollections(filePath: string) {
-  const userId = sbClient.auth.session()?.user?.id
+  const {
+    data: { session },
+  } = await sbClient.auth.getSession()
+  const userId = session?.user?.id || ''
+
   const fileCOntent = await readTextFile(filePath, { dir: BaseDirectory.App })
   const rawData = JSON.parse(fileCOntent)
 

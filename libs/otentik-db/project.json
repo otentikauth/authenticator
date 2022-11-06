@@ -12,14 +12,14 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/otentik-db"],
+            "outputs": ["{workspaceRoot}/coverage/libs/otentik-db"],
             "options": {
                 "jestConfig": "libs/otentik-db/jest.config.ts",
                 "passWithNoTests": true
             }
         },
         "start": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "commands": ["supabase start"],
                 "cwd": "libs/otentik-db",
@@ -27,7 +27,7 @@
             }
         },
         "stop": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "commands": ["supabase stop"],
                 "cwd": "libs/otentik-db",
@@ -35,7 +35,7 @@
             }
         },
         "restart": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "commands": ["supabase stop", "supabase start"],
                 "cwd": "libs/otentik-db",
@@ -43,14 +43,14 @@
             }
         },
         "create-local-snapshot": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "commands": ["ts-node libs/otentik-db/src/create-local-snapshot.ts -P libs/otentik-db/tsconfig.json"],
                 "parallel": false
             }
         },
         "create-production-snapshot": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "commands": [
                     "ts-node libs/otentik-db/src/create-production-snapshot.ts -P libs/otentik-db/tsconfig.json"
@@ -59,7 +59,7 @@
             }
         },
         "restore-snapshot-to-local-db": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "commands": ["ts-node libs/otentik-db/src/restore-snapshot.ts -P libs/otentik-db/tsconfig.json"],
                 "parallel": false,
@@ -67,7 +67,7 @@
             }
         },
         "clear-local-db-data": {
-            "executor": "@nrwl/workspace:run-commands",
+            "executor": "nx:run-commands",
             "options": {
                 "commands": [
                     "PGPASSWORD=postgres psql -U postgres -h 127.0.0.1 -p 54322 -f libs/otentik-db/supabase/clear-db.sql"
