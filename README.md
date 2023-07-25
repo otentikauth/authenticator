@@ -3,6 +3,9 @@
     <a href="https://github.com/riipandi/otentik-authenticator-desktop/releases/tag/latest">
         <img src="https://github.com/riipandi/otentik-authenticator-desktop/actions/workflows/release.yml/badge.svg?branch=main" alt="Release Status">
     </a>
+    <a href="https://github.com/riipandi/otentik-authenticator-desktop/releases/tag/latest">
+        <img src="https://img.shields.io/github/v/release/otentikauth/authenticator?color=%236040ff&label=Latest%20release" alt="Latest Version">
+    </a>
     <a href="https://github.com/otentikapp/clients/pulse">
         <img src="https://img.shields.io/badge/Contributions-welcome-blue.svg?style=flat-square" alt="Contribution welcome">
     </a>
